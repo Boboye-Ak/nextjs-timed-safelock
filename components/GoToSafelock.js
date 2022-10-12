@@ -1,4 +1,6 @@
-const YouDontHaveASafelock = () => {
+import React from "react"
+
+const GoToSafelock = () => {
     return (
         <div
             style={{
@@ -9,10 +11,9 @@ const YouDontHaveASafelock = () => {
                 height: "90vh",
             }}
         >
-            <div>You Don't Have A Safelock. Please Create One</div>
-            <button>CREATE SAFELOCK</button>
+            <button>GO TO SAFELOCK</button>
         </div>
     )
 }
 
-export default YouDontHaveASafelock
+export default GoToSafelock

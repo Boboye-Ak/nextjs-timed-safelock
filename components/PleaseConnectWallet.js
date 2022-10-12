@@ -1,4 +1,6 @@
-const YouDontHaveASafelock = () => {
+import { ConnectButton } from "web3uikit"
+
+const PleaseConnectWallet = () => {
     return (
         <div
             style={{
@@ -9,10 +11,10 @@ const YouDontHaveASafelock = () => {
                 height: "90vh",
             }}
         >
-            <div>You Don't Have A Safelock. Please Create One</div>
-            <button>CREATE SAFELOCK</button>
+            <div>Please Connect Your Wallet</div>
+            <ConnectButton moralisAuth={false} />
         </div>
     )
 }
 
-export default YouDontHaveASafelock
+export default PleaseConnectWallet
