@@ -1,5 +1,3 @@
-import React from "react"
-
 const GoToSafelock = () => {
     return (
         <div
@@ -11,7 +9,9 @@ const GoToSafelock = () => {
                 height: "90vh",
             }}
         >
-            <button>GO TO SAFELOCK</button>
+            <button>
+                <a href="/mysafelock">GO TO YOUR SAFELOCK</a>
+            </button>
         </div>
     )
 }
