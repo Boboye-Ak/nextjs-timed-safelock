@@ -1,3 +1,4 @@
+import Link from "next/link"
 const GoToSafelock = () => {
     return (
         <div
@@ -10,7 +11,7 @@ const GoToSafelock = () => {
             }}
         >
             <button>
-                <a href="/mysafelock">GO TO YOUR SAFELOCK</a>
+                <Link href="/mysafelock">GO TO YOUR SAFELOCK</Link>
             </button>
         </div>
     )

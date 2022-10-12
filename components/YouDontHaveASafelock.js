@@ -1,3 +1,5 @@
+import Link from "next/link"
+
 const YouDontHaveASafelock = () => {
     return (
         <div
@@ -10,7 +12,9 @@ const YouDontHaveASafelock = () => {
             }}
         >
             <div>You Don't Have A Safelock. Please Create One</div>
-            <button>CREATE SAFELOCK</button>
+            <button>
+                <Link href="/createsafelock">CREATE SAFELOCK</Link>
+            </button>
         </div>
     )
 }

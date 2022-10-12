@@ -14,6 +14,7 @@ const MySafelock = () => {
         chainId in safelockFactoryAddresses ? safelockFactoryAddresses[chainId][0] : null
 
     const [mySafelockId, setMySafelockId] = useState(0)
+    const [mySafelockAddress, setMySafelockAddress] = useState("")
     //Web3 Functions
     const {
         runContractFunction: getMySafelockId,
@@ -25,6 +26,16 @@ const MySafelock = () => {
         functionName: "getMySafelockId",
         params: {},
     })
+    const {
+        runContractFunction: getMySafelockAddress,
+        isFetching: getMySafelockAddressIsFetching,
+        isLoading: getMySafelockAddressIsLoading,
+    } = useWeb3Contract({
+        abi: safelockFactoryABI,
+        contractAddress: safelockFactoryAddress,
+        functionName: "getMySafelockAddress",
+        params: {},
+    })
 
     //Web2 Functions
     const updateUI = async () => {
@@ -32,6 +43,9 @@ const MySafelock = () => {
         mySafelockIdFromCall = mySafelockIdFromCall?.toString()
         mySafelockIdFromCall = parseInt(mySafelockIdFromCall)
         setMySafelockId(mySafelockIdFromCall)
+        let mySafelockAddressFromCall = await getMySafelockAddress()
+        mySafelockAddressFromCall = mySafelockAddressFromCall?.toString()
+        setMySafelockAddress(mySafelockAddressFromCall)
     }
 
     //UseEffects
@@ -45,8 +59,8 @@ const MySafelock = () => {
         <div className={styles.container}>
             <Header />
             {account ? (
-                mySafelockId ? (
-                    <Safelock />
+                mySafelockId && mySafelockAddress ? (
+                    <Safelock mySafelockId={mySafelockId} mySafelockAddress={mySafelockAddress} />
                 ) : (
                     <YouDontHaveASafelock />
                 )
