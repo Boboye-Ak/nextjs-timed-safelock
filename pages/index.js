@@ -5,7 +5,7 @@ import styles from "../styles/Home.module.css"
 export default function Home() {
     return (
         <div className={styles.container}>
-            <CountdownTimer startTime={18400} />
+            <CountdownTimer endTime={1665670996229 / 1000} />
         </div>
     )
 }
