@@ -29,11 +29,12 @@ const CountdownTimer = ({ endTime }) => {
         })
     }
 
-    useEffect(()=>{
+    useEffect(() => {
         startTimer()
     }, [])
     return (
         <div style={{ display: "flex", flexDirection: "row", alignItems: "center" }}>
+            <div>Time Till Withdrawal:</div>
             <div
                 style={{
                     display: "flex",
