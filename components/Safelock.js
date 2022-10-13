@@ -12,6 +12,7 @@ const Safelock = ({ mySafelockId, mySafelockAddress }) => {
 
     const [safes, setSafes] = useState([])
     const [firstName, setFirstName] = useState([])
+    const [showBroken, setShowBroken] = useState(false)
     //Web3 functions
     const {
         runContractFunction: getSafes,
@@ -37,7 +38,16 @@ const Safelock = ({ mySafelockId, mySafelockAddress }) => {
     //Web2 Functions
     const updateUI = async () => {
         const safesFromCall = await getSafes()
-        setSafes(safesFromCall)
+        const filteredSafes = safesFromCall.filter((safe) => {
+            if (!safe.isBroken) {
+                return safe
+            }
+        })
+        if (showBroken) {
+            setSafes(safesFromCall)
+        } else {
+            setSafes(filteredSafes)
+        }
         const firstNameFromCall = await getOwnerFirstName()
         setFirstName(firstNameFromCall)
     }
@@ -46,7 +56,7 @@ const Safelock = ({ mySafelockId, mySafelockAddress }) => {
         if ((isWeb3Enabled, mySafelockAddress)) {
             updateUI()
         }
-    }, [mySafelockAddress, isWeb3Enabled])
+    }, [mySafelockAddress, isWeb3Enabled, showBroken])
     return (
         <div>
             Hello {firstName}
@@ -56,11 +66,13 @@ const Safelock = ({ mySafelockId, mySafelockAddress }) => {
                 return (
                     <Safe
                         safeIndex={index}
+                        safelockAddress={mySafelockAddress}
                         safeAmount={parseInt(safe.amount?.toString())}
                         endTime={
                             parseInt(safe.createdTime?.toString()) +
                             parseInt(safe.timeLength?.toString())
                         }
+                        isBroken={safe.isBroken}
                     />
                 )
             })}

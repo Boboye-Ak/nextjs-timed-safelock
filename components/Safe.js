@@ -1,6 +1,6 @@
 import CountdownTimer from "./CountdownTimer"
 
-const Safe = ({ safeIndex, safeAmount, endTime }) => {
+const Safe = ({ safeIndex, safeAmount, endTime, safelockAddress, isBroken }) => {
     return (
         <div
             style={{
@@ -13,7 +13,12 @@ const Safe = ({ safeIndex, safeAmount, endTime }) => {
             index: {safeIndex}
             {"  "}
             amount: {safeAmount}
-            <CountdownTimer endTime={endTime} safeIndex={safeIndex}/>
+            <CountdownTimer
+                endTime={endTime}
+                safeIndex={safeIndex}
+                safelockAddress={safelockAddress}
+                isBroken={isBroken}
+            />
         </div>
     )
 }
