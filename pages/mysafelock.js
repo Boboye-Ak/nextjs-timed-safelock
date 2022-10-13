@@ -38,7 +38,7 @@ const MySafelock = () => {
     })
 
     //Web2 Functions
-    const updateUI = async () => {
+    const setAddressandId = async () => {
         let mySafelockIdFromCall = await getMySafelockId()
         mySafelockIdFromCall = mySafelockIdFromCall?.toString()
         mySafelockIdFromCall = parseInt(mySafelockIdFromCall)
@@ -51,7 +51,7 @@ const MySafelock = () => {
     //UseEffects
     useEffect(() => {
         if (isWeb3Enabled) {
-            updateUI()
+            setAddressandId()
         }
     }, [isWeb3Enabled, account])
 
