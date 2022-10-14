@@ -13,6 +13,7 @@ const Safe = ({ safeIndex, safeAmount, endTime, safelockAddress, isBroken }) => 
             index: {safeIndex}
             {"  "}
             amount: {safeAmount}
+            {isBroken&&"The safe is broken"}
             <CountdownTimer
                 endTime={endTime}
                 safeIndex={safeIndex}

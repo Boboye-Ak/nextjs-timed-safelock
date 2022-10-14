@@ -3,6 +3,7 @@ import { useMoralis, useWeb3Contract } from "react-moralis"
 import { safelockFactoryAddresses, safelockFactoryABI, safelockABI } from "../constants"
 import CountdownTimer from "./CountdownTimer"
 import Safe from "./Safe"
+import Switch from "./Switch"
 
 const Safelock = ({ mySafelockId, mySafelockAddress }) => {
     const { chainId: chainIdHex, isWeb3Enabled, account } = useMoralis()
@@ -11,6 +12,7 @@ const Safelock = ({ mySafelockId, mySafelockAddress }) => {
         chainId in safelockFactoryAddresses ? safelockFactoryAddresses[chainId][0] : null
 
     const [safes, setSafes] = useState([])
+    const [filteredSafes, setFilteredSafes] = useState([])
     const [firstName, setFirstName] = useState([])
     const [showBroken, setShowBroken] = useState(false)
     //Web3 functions
@@ -34,20 +36,19 @@ const Safelock = ({ mySafelockId, mySafelockAddress }) => {
         functionName: "getOwnerFirstName",
         params: {},
     })
+    let filteredSafesFromCall, safesFromCall
 
     //Web2 Functions
     const updateUI = async () => {
-        const safesFromCall = await getSafes()
-        const filteredSafes = safesFromCall.filter((safe) => {
+        safesFromCall = await getSafes()
+        filteredSafesFromCall = safesFromCall.filter((safe) => {
             if (!safe.isBroken) {
                 return safe
             }
         })
-        if (showBroken) {
-            setSafes(safesFromCall)
-        } else {
-            setSafes(filteredSafes)
-        }
+        console.log(safesFromCall)
+        setSafes(safesFromCall)
+        setFilteredSafes(filteredSafesFromCall)
         const firstNameFromCall = await getOwnerFirstName()
         setFirstName(firstNameFromCall)
     }
@@ -62,20 +63,43 @@ const Safelock = ({ mySafelockId, mySafelockAddress }) => {
             Hello {firstName}
             My SafelockId:{mySafelockId}
             My Safelock Address:{mySafelockAddress}
-            {safes.map((safe, index) => {
-                return (
-                    <Safe
-                        safeIndex={index}
-                        safelockAddress={mySafelockAddress}
-                        safeAmount={parseInt(safe.amount?.toString())}
-                        endTime={
-                            parseInt(safe.createdTime?.toString()) +
-                            parseInt(safe.timeLength?.toString())
-                        }
-                        isBroken={safe.isBroken}
-                    />
-                )
-            })}
+            <Switch
+                isToggled={showBroken}
+                onToggle={() => {
+                    setShowBroken(!showBroken)
+                }}
+            />
+            {showBroken
+                ? safes.map((safe, index) => {
+                      return (
+                          <Safe
+                              safeIndex={index}
+                              safelockAddress={mySafelockAddress}
+                              safeAmount={parseInt(safe.amount?.toString())}
+                              endTime={
+                                  parseInt(safe.createdTime?.toString()) +
+                                  parseInt(safe.timeLength?.toString())
+                              }
+                              isBroken={safe.isBroken}
+                          />
+                      )
+                  })
+                : safes.map((safe, index) => {
+                      if (!safe.isBroken) {
+                          return (
+                              <Safe
+                                  safeIndex={index}
+                                  safelockAddress={mySafelockAddress}
+                                  safeAmount={parseInt(safe.amount?.toString())}
+                                  endTime={
+                                      parseInt(safe.createdTime?.toString()) +
+                                      parseInt(safe.timeLength?.toString())
+                                  }
+                                  isBroken={safe.isBroken}
+                              />
+                          )
+                      }
+                  })}
         </div>
     )
 }
