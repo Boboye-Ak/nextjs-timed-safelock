@@ -49,6 +49,9 @@ const Safelock = ({ mySafelockId, mySafelockAddress }) => {
         const firstNameFromCall = await getOwnerFirstName()
         setFirstName(firstNameFromCall)
     }
+    const toggleNewSafeForm = () => {
+        setShowNewSafeForm(!showNewSafeForm)
+    }
 
     useEffect(() => {
         if ((isWeb3Enabled, mySafelockAddress)) {
@@ -100,10 +103,20 @@ const Safelock = ({ mySafelockId, mySafelockAddress }) => {
                           )
                       }
                   })}
-            {showNewSafeForm && <NewSafeForm />}
-            {!showNewSafeForm && <AddSafe onClick={()=>{
-                setShowNewSafeForm(!showNewSafeForm)
-            }} />}
+            {showNewSafeForm && (
+                <NewSafeForm
+                    safelockAddress={mySafelockAddress}
+                    updateUI={updateUI}
+                    toggleNewSafeForm={toggleNewSafeForm}
+                />
+            )}
+            {!showNewSafeForm && (
+                <AddSafe
+                    onClick={() => {
+                        toggleNewSafeForm()
+                    }}
+                />
+            )}
         </div>
     )
 }
