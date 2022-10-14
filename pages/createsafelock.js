@@ -5,6 +5,7 @@ import CreateSafelock from "../components/CreateSafelock"
 import styles from "../styles/Home.module.css"
 import { useMoralis, useWeb3Contract } from "react-moralis"
 import GoToSafelock from "../components/GoToSafelock"
+import PleaseConnectWallet from "../components/PleaseConnectWallet"
 
 const CreateSafelockPage = () => {
     const { chainId: chainIdHex, isWeb3Enabled, account } = useMoralis()
@@ -43,7 +44,16 @@ const CreateSafelockPage = () => {
     return (
         <div className={styles.container}>
             <Header />
-            {mySafelockId ? <GoToSafelock /> : <CreateSafelock />}
+
+            {account ? (
+                mySafelockId ? (
+                    <GoToSafelock />
+                ) : (
+                    <CreateSafelock updateUI={updateUI} />
+                )
+            ) : (
+                <PleaseConnectWallet />
+            )}
         </div>
     )
 }

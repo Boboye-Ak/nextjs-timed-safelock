@@ -12,7 +12,6 @@ const Safelock = ({ mySafelockId, mySafelockAddress }) => {
         chainId in safelockFactoryAddresses ? safelockFactoryAddresses[chainId][0] : null
 
     const [safes, setSafes] = useState([])
-    const [filteredSafes, setFilteredSafes] = useState([])
     const [firstName, setFirstName] = useState([])
     const [showBroken, setShowBroken] = useState(false)
     //Web3 functions
@@ -41,14 +40,8 @@ const Safelock = ({ mySafelockId, mySafelockAddress }) => {
     //Web2 Functions
     const updateUI = async () => {
         safesFromCall = await getSafes()
-        filteredSafesFromCall = safesFromCall.filter((safe) => {
-            if (!safe.isBroken) {
-                return safe
-            }
-        })
         console.log(safesFromCall)
         setSafes(safesFromCall)
-        setFilteredSafes(filteredSafesFromCall)
         const firstNameFromCall = await getOwnerFirstName()
         setFirstName(firstNameFromCall)
     }
