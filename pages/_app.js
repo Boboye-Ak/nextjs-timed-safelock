@@ -2,6 +2,7 @@ import { MoralisProvider } from "react-moralis"
 import { NotificationProvider } from "web3uikit"
 import Head from "next/head"
 import "../styles/globals.css"
+import "../styles/switch.css"
 
 function MyApp({ Component, pageProps }) {
     return (
