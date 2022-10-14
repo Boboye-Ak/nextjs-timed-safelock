@@ -1,4 +1,5 @@
 import CountdownTimer from "./CountdownTimer"
+import { convertToEth } from "../utils/converter"
 
 const Safe = ({ safeIndex, safeAmount, endTime, safelockAddress, isBroken }) => {
     return (
@@ -12,8 +13,8 @@ const Safe = ({ safeIndex, safeAmount, endTime, safelockAddress, isBroken }) => 
         >
             index: {safeIndex}
             {"  "}
-            amount: {safeAmount}
-            {isBroken&&"The safe is broken"}
+            amount: {convertToEth(safeAmount)}
+            {isBroken && "The safe is broken"}
             <CountdownTimer
                 endTime={endTime}
                 safeIndex={safeIndex}

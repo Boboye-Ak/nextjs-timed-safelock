@@ -60,17 +60,36 @@ const Safelock = ({ mySafelockId, mySafelockAddress }) => {
     }, [mySafelockAddress, isWeb3Enabled, showBroken])
     return (
         <div>
-            Hello {firstName}
-            My SafelockId:{mySafelockId}
-            My Safelock Address:{mySafelockAddress}
-            {safes.length > 0 && (
-                <Switch
-                    isToggled={showBroken}
-                    onToggle={() => {
-                        setShowBroken(!showBroken)
-                    }}
-                />
-            )}
+            <div
+                style={{
+                    display: "flex",
+                    flexDirection: "row",
+                    alignItems: "center",
+                    justifyContent: "space-between",
+                }}
+            >
+                Hello {firstName}, #{mySafelockId}
+                Safelock Address:{mySafelockAddress}
+                {safes.length > 0 && (
+                    <div
+                        style={{
+                            display: "flex",
+                            flexDirection: "row",
+                            alignItems: "center",
+                            justifyContent: "center",
+                        }}
+                    >
+                        SHOW BROKEN SAFES
+                        <Switch
+                            isToggled={showBroken}
+                            onToggle={() => {
+                                setShowBroken(!showBroken)
+                            }}
+                        />
+                    </div>
+                )}
+            </div>
+
             {safes.length <= 0 && <NoSafes />}
             {showBroken
                 ? safes.map((safe, index) => {
