@@ -1,7 +1,10 @@
 import { useEffect, useState } from "react"
 import { useMoralis, useWeb3Contract } from "react-moralis"
 import { safelockFactoryAddresses, safelockFactoryABI, safelockABI } from "../constants"
+import AddSafe from "./AddSafe"
 import CountdownTimer from "./CountdownTimer"
+import NewSafeForm from "./NewSafeForm"
+import NoSafes from "./NoSafes"
 import Safe from "./Safe"
 import Switch from "./Switch"
 
@@ -14,6 +17,7 @@ const Safelock = ({ mySafelockId, mySafelockAddress }) => {
     const [safes, setSafes] = useState([])
     const [firstName, setFirstName] = useState([])
     const [showBroken, setShowBroken] = useState(false)
+    const [showNewSafeForm, setShowNewSafeForm] = useState(false)
     //Web3 functions
     const {
         runContractFunction: getSafes,
@@ -56,12 +60,15 @@ const Safelock = ({ mySafelockId, mySafelockAddress }) => {
             Hello {firstName}
             My SafelockId:{mySafelockId}
             My Safelock Address:{mySafelockAddress}
-            <Switch
-                isToggled={showBroken}
-                onToggle={() => {
-                    setShowBroken(!showBroken)
-                }}
-            />
+            {safes.length > 0 && (
+                <Switch
+                    isToggled={showBroken}
+                    onToggle={() => {
+                        setShowBroken(!showBroken)
+                    }}
+                />
+            )}
+            {safes.length <= 0 && <NoSafes />}
             {showBroken
                 ? safes.map((safe, index) => {
                       return (
@@ -93,6 +100,10 @@ const Safelock = ({ mySafelockId, mySafelockAddress }) => {
                           )
                       }
                   })}
+            {showNewSafeForm && <NewSafeForm />}
+            {!showNewSafeForm && <AddSafe onClick={()=>{
+                setShowNewSafeForm(!showNewSafeForm)
+            }} />}
         </div>
     )
 }

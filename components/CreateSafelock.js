@@ -1,8 +1,10 @@
 import { safelockFactoryAddresses, safelockFactoryABI, safelockABI } from "../constants"
 import { useMoralis, useWeb3Contract } from "react-moralis"
+import { useRouter } from "next/router"
 import { useState } from "react"
 
-const CreateSafelock = ({updateUI}) => {
+const CreateSafelock = ({ updateUI }) => {
+    const router = useRouter()
     const { chainId: chainIdHex, isWeb3Enabled, account } = useMoralis()
     const chainId = parseInt(chainIdHex)
     const safelockFactoryAddress =
@@ -19,17 +21,19 @@ const CreateSafelock = ({updateUI}) => {
         abi: safelockFactoryABI,
         contractAddress: safelockFactoryAddress,
         functionName: "createSafelock",
-        params: { firstName: firstName },
+        params: { safelockOwnerName: firstName },
     })
 
     //Web2 Functions
     const handleCreate = async () => {
+        console.log({ firstName, safelockFactoryABI, safelockFactoryAddress })
         await createSafelock({
             onSuccess: async (tx) => {
                 setIsAwaitingConfirmation(true)
                 await tx.wait(1)
                 setIsAwaitingConfirmation(false)
-                updateUI()
+                await updateUI()
+                router.push("/mysafelock")
             },
         })
     }
