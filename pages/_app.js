@@ -3,6 +3,9 @@ import { NotificationProvider } from "web3uikit"
 import Head from "next/head"
 import "../styles/globals.css"
 import "../styles/switch.css"
+import "../styles/safelock.css"
+import "../styles/buttons.css"
+import "../styles/safe.css"
 
 function MyApp({ Component, pageProps }) {
     return (

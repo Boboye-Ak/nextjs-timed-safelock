@@ -1,6 +1,8 @@
 import Link from "next/link"
+import { useRouter } from "next/router"
 
 const YouDontHaveASafelock = () => {
+    const router = useRouter()
     return (
         <div
             style={{
@@ -12,9 +14,10 @@ const YouDontHaveASafelock = () => {
             }}
         >
             <div>You Don't Have A Safelock. Please Create One</div>
-            <button>
-                <Link href="/createsafelock">CREATE SAFELOCK</Link>
-            </button>
+
+            <button class="glow-on-hover" onClick={()=>{
+                router.push("/createsafelock")
+            }}>CREATE SAFELOCK</button>
         </div>
     )
 }

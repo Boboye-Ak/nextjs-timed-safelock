@@ -57,7 +57,7 @@ const Safelock = ({ mySafelockId, mySafelockAddress }) => {
         if ((isWeb3Enabled, mySafelockAddress)) {
             updateUI()
         }
-    }, [mySafelockAddress, isWeb3Enabled, showBroken])
+    }, [mySafelockAddress, isWeb3Enabled, showBroken, account])
     return (
         <div>
             <div
@@ -68,8 +68,7 @@ const Safelock = ({ mySafelockId, mySafelockAddress }) => {
                     justifyContent: "space-between",
                 }}
             >
-                Hello {firstName}, #{mySafelockId}
-                Safelock Address:{mySafelockAddress}
+                <span>Hello {firstName},</span> <span>Safelock #{mySafelockId}</span>
                 {safes.length > 0 && (
                     <div
                         style={{

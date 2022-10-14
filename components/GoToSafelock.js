@@ -1,5 +1,7 @@
 import Link from "next/link"
+import { useRouter } from "next/router"
 const GoToSafelock = () => {
+    const router = useRouter()
     return (
         <div
             style={{
@@ -10,8 +12,10 @@ const GoToSafelock = () => {
                 height: "90vh",
             }}
         >
-            <button>
-                <Link href="/mysafelock">GO TO YOUR SAFELOCK</Link>
+            <button class="glow-on-hover" onClick={()=>{
+                router.push("/mysafelock")
+            }}>
+                GO TO YOUR SAFELOCK
             </button>
         </div>
     )

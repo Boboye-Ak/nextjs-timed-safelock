@@ -29,6 +29,7 @@ const WithdrawButton = ({ safeIndex, safelockAddress, isBroken }) => {
     return (
         <div>
             <button
+                className="button-18"
                 onClick={handleWithdraw}
                 disabled={
                     withdrawIsFetching || withdrawIsLoading || isAwaitingConfirmation || isBroken
