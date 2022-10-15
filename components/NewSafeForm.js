@@ -70,22 +70,23 @@ const NewSafeForm = ({ safelockAddress, updateUI, toggleNewSafeForm }) => {
         updateParams()
     }, [seconds, minutes, hours, days, amount])
     return (
-        <div className="new-safe-form"
+        <div
+            className="new-safe-form"
             style={{
                 border: "solid",
                 display: "flex",
                 flexDirection: "column",
                 alignItems: "center",
-                justifyContent: "center",
+                justifyContent: "space-between",
             }}
         >
             <div
+                className="new-safe-form-row"
                 style={{
                     width: "100%",
-                    border: "solid",
                     display: "flex",
                     flexDirection: "row",
-                    alignItems: "center",
+                    alignItems: "stretch",
                     justifyContent: "space-between",
                 }}
             >
@@ -98,6 +99,7 @@ const NewSafeForm = ({ safelockAddress, updateUI, toggleNewSafeForm }) => {
                 />
                 <div>
                     <input
+                        className="time-input"
                         type="number"
                         placeholder="DAYS"
                         value={days}
@@ -106,6 +108,7 @@ const NewSafeForm = ({ safelockAddress, updateUI, toggleNewSafeForm }) => {
                         }}
                     />
                     <input
+                        className="time-input"
                         type="number"
                         placeholder="HOURS"
                         value={hours}
@@ -114,6 +117,7 @@ const NewSafeForm = ({ safelockAddress, updateUI, toggleNewSafeForm }) => {
                         }}
                     />
                     <input
+                        className="time-input"
                         type="number"
                         placeholder="MINUTES"
                         value={minutes}
@@ -122,6 +126,7 @@ const NewSafeForm = ({ safelockAddress, updateUI, toggleNewSafeForm }) => {
                         }}
                     />
                     <input
+                        className="time-input"
                         type="number"
                         placeholder="SECONDS"
                         value={seconds}
@@ -131,21 +136,33 @@ const NewSafeForm = ({ safelockAddress, updateUI, toggleNewSafeForm }) => {
                     />
                 </div>
             </div>
-            <button
-                disabled={
-                    createSafeIsFetching ||
-                    createSafeIsLoading ||
-                    ((!seconds || parseFloat(seconds) == 0) &&
-                        (!minutes || parseFloat(minutes) == 0) &&
-                        (!hours || parseFloat(hours) == 0) &&
-                        (!days || parseFloat(days) == 0)) ||
-                    !amount ||
-                    parseFloat(amount) == 0
-                }
-                onClick={handleCreate}
+            <div
+                className="new-safe-form-row"
+                style={{
+                    width: "100%",
+                    display: "flex",
+                    flexDirection: "row",
+                    alignItems: "center",
+                    justifyContent: "center",
+                }}
             >
-                CREATE SAFE
-            </button>
+                <button
+                    className="button-18"
+                    disabled={
+                        createSafeIsFetching ||
+                        createSafeIsLoading ||
+                        ((!seconds || parseFloat(seconds) == 0) &&
+                            (!minutes || parseFloat(minutes) == 0) &&
+                            (!hours || parseFloat(hours) == 0) &&
+                            (!days || parseFloat(days) == 0)) ||
+                        !amount ||
+                        parseFloat(amount) == 0
+                    }
+                    onClick={handleCreate}
+                >
+                    CREATE SAFE
+                </button>
+            </div>
         </div>
     )
 }

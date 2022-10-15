@@ -1,9 +1,27 @@
-.new-safe-form{
+@font-face {
+    font-family: digital;
+    src: url(fonts/digital-7.ttf);
+}
+.new-safe-form {
     margin-top: 10px;
     margin-bottom: 10px;
     padding-left: 5px;
     padding-right: 5px;
-    height: 100px;
+    height: 200px;
     border-radius: 6px;
     box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5);
+}
+.new-safe-form-row {
+    height: 50px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.time-input {
+    height: 100%;
+    width: 100px;
+    margin-left: 3px;
+    margin-right: 3px;
+    font-family: digital;
+    font-size: 23px;
 }
