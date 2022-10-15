@@ -18,6 +18,7 @@ const Safelock = ({ mySafelockId, mySafelockAddress }) => {
     const [firstName, setFirstName] = useState([])
     const [showBroken, setShowBroken] = useState(false)
     const [showNewSafeForm, setShowNewSafeForm] = useState(false)
+    const [showSafelockAddress, setShowSafelockAddress] = useState(true)
     //Web3 functions
     const {
         runContractFunction: getSafes,
@@ -68,7 +69,26 @@ const Safelock = ({ mySafelockId, mySafelockAddress }) => {
                     justifyContent: "space-between",
                 }}
             >
-                <span>Hello {firstName},</span> <span>Safelock #{mySafelockId}</span>
+                <span className="greeting">Hello {firstName},</span>{" "}
+                <div>
+                    <span
+                        className="safelock-id"
+                        onMouseEnter={() => {
+                            setShowSafelockAddress(true)
+                        }}
+                        onMouseLeave={() => {
+                            setShowSafelockAddress(false)
+                        }}
+                    >
+                        Safelock #{mySafelockId}
+                    </span>
+                    <div
+                        className={`add-safe-info ${!showSafelockAddress && "hidden"}`}
+                        style={{ width: "auto", position: "absolute" }}
+                    >
+                        Safelock Address is {mySafelockAddress}
+                    </div>
+                </div>
                 {safes.length > 0 && (
                     <div
                         style={{

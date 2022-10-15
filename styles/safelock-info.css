@@ -1,0 +1,13 @@
+.greeting {
+    font-size: 30px;
+    font-weight: bolder;
+}
+
+.safelock-id {
+    width: auto;
+    padding: 7px;
+    border: solid;
+    border-radius: 15px;
+    border-radius: solid;
+    cursor: pointer;
+}

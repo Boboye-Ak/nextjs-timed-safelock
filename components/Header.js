@@ -10,6 +10,7 @@ const Header = () => {
                 flexDirection: "row",
                 alignItems: "center",
             }}
+            className="header"
         >
             <ConnectButton moralisAuth={false} />
         </div>

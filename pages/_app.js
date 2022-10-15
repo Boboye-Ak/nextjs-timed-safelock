@@ -8,7 +8,8 @@ import "../styles/buttons.css"
 import "../styles/safe.css"
 import "../styles/timer.css"
 import "../styles/newsafeform.css"
-
+import "../styles/safelock-info.css"
+import "../styles/header.css"
 function MyApp({ Component, pageProps }) {
     return (
         <>
