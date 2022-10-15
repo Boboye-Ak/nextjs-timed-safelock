@@ -11,6 +11,10 @@
     border-radius: 6px;
     box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5);
 }
+.new-safe-form-main {
+    padding-left: 10px;
+    padding-right: 10px;
+}
 .new-safe-form-row {
     height: 50px;
     margin-top: 20px;

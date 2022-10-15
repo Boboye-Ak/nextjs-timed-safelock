@@ -2,7 +2,7 @@ import { ethers } from "ethers"
 
 const convertToEth = (wei) => {
     let result = Number(wei) / 1000000000000000000
-    result = result.toFixed(4).toString()
+    result = result.toFixed(3).toString()
     return result
 }
 

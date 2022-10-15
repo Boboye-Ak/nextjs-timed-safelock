@@ -136,5 +136,44 @@
 }
 .add-safe-button:hover {
     background-color: #16437e;
-    
+}
+.add-safe-info {
+    margin-top: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 200px;
+    height: 100px;
+    border: solid;
+    border-radius: 20px;
+    background-color: #0a66c2;
+    color: white;
+    transition: 0.4s;
+    z-index: 5;
+    overflow-y: visible;
+}
+
+.add-safe-info.hidden {
+    font-size: 0;
+    opacity: 0;
+    height: 0;
+    width: 0;
+}
+
+.cancel-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: solid;
+    border-width: thin;
+    width: 30px;
+    height: 30px;
+    font-size: 15px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.cancel-button:hover {
+    background-color: red;
+    color: white;
 }

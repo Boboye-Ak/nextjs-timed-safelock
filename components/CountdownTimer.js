@@ -61,7 +61,7 @@ const CountdownTimer = ({ endTime, safeIndex, safelockAddress, isBroken }) => {
                             justifyContent: "center",
                             alignItems: "center",
                         }}
-                        className="timer-subgroup"
+                        className="timer-colon"
                     >
                         :
                     </div>
@@ -84,7 +84,7 @@ const CountdownTimer = ({ endTime, safeIndex, safelockAddress, isBroken }) => {
                             justifyContent: "center",
                             alignItems: "center",
                         }}
-                        className="timer-subgroup"
+                        className="timer-colon"
                     >
                         :
                     </div>
@@ -107,7 +107,7 @@ const CountdownTimer = ({ endTime, safeIndex, safelockAddress, isBroken }) => {
                             justifyContent: "center",
                             alignItems: "center",
                         }}
-                        className="timer-subgroup"
+                        className="timer-colon"
                     >
                         :
                     </div>

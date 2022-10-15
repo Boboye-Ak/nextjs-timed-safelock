@@ -9,6 +9,21 @@
 }
 
 .timer-subgroup {
+    width: 100px;
+    height: auto;
+    padding: 3px;
+    border: solid;
     margin-left: 5px;
     margin-right: 5px;
+}
+
+.timer-subgroup small {
+    font-family: digital;
+    font-weight: bolder;
+}
+
+.timer-colon {
+    margin-left: 5px;
+    margin-right: 5px;
+    font-size: 25px;
 }

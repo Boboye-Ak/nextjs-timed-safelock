@@ -77,91 +77,148 @@ const NewSafeForm = ({ safelockAddress, updateUI, toggleNewSafeForm }) => {
                 display: "flex",
                 flexDirection: "column",
                 alignItems: "center",
-                justifyContent: "space-between",
+                justifyContent: "flex-start",
             }}
         >
             <div
-                className="new-safe-form-row"
                 style={{
                     width: "100%",
                     display: "flex",
-                    flexDirection: "row",
-                    alignItems: "stretch",
-                    justifyContent: "space-between",
-                }}
-            >
-                <input
-                    type="number"
-                    placeholder="AMOUNT"
-                    onChange={(e) => {
-                        setAmount(e.target.value)
-                    }}
-                />
-                <div>
-                    <input
-                        className="time-input"
-                        type="number"
-                        placeholder="DAYS"
-                        value={days}
-                        onChange={(e) => {
-                            setDays(e.target.value)
-                        }}
-                    />
-                    <input
-                        className="time-input"
-                        type="number"
-                        placeholder="HOURS"
-                        value={hours}
-                        onChange={(e) => {
-                            setHours(e.target.value)
-                        }}
-                    />
-                    <input
-                        className="time-input"
-                        type="number"
-                        placeholder="MINUTES"
-                        value={minutes}
-                        onChange={(e) => {
-                            setMinutes(e.target.value)
-                        }}
-                    />
-                    <input
-                        className="time-input"
-                        type="number"
-                        placeholder="SECONDS"
-                        value={seconds}
-                        onChange={(e) => {
-                            setSeconds(e.target.value)
-                        }}
-                    />
-                </div>
-            </div>
-            <div
-                className="new-safe-form-row"
-                style={{
-                    width: "100%",
-                    display: "flex",
-                    flexDirection: "row",
-                    alignItems: "center",
+                    flexDirection: "column",
+                    alignItems: "flex-end",
                     justifyContent: "center",
                 }}
             >
-                <button
-                    className="button-18"
-                    disabled={
-                        createSafeIsFetching ||
-                        createSafeIsLoading ||
-                        ((!seconds || parseFloat(seconds) == 0) &&
-                            (!minutes || parseFloat(minutes) == 0) &&
-                            (!hours || parseFloat(hours) == 0) &&
-                            (!days || parseFloat(days) == 0)) ||
-                        !amount ||
-                        parseFloat(amount) == 0
-                    }
-                    onClick={handleCreate}
+                <div className="cancel-button" onClick={toggleNewSafeForm}>
+                    x
+                </div>
+            </div>
+            <div
+                style={{
+                    width: "100%",
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    justifyContent: "space-between",
+                }}
+                className="new-safe-form-main"
+            >
+                <div
+                    className="new-safe-form-row"
+                    style={{
+                        width: "100%",
+                        display: "flex",
+                        flexDirection: "row",
+                        alignItems: "stretch",
+                        justifyContent: "space-between",
+                    }}
                 >
-                    CREATE SAFE
-                </button>
+                    <input
+                        type="number"
+                        placeholder="AMOUNT"
+                        onChange={(e) => {
+                            setAmount(e.target.value)
+                        }}
+                    />
+                    <div style={{display:"flex"}}>
+                        <input
+                            className="time-input"
+                            type="number"
+                            placeholder="DAYS"
+                            value={days}
+                            onChange={(e) => {
+                                setDays(e.target.value)
+                            }}
+                        />
+                        <div
+                            style={{
+                                display: "flex",
+                                flexDirection: "column",
+                                justifyContent: "center",
+                                alignItems: "center",
+                            }}
+                            className="timer-colon"
+                        >
+                            :
+                        </div>
+                        <input
+                            className="time-input"
+                            type="number"
+                            placeholder="HOURS"
+                            value={hours}
+                            onChange={(e) => {
+                                setHours(e.target.value)
+                            }}
+                        />
+                        <div
+                            style={{
+                                display: "flex",
+                                flexDirection: "column",
+                                justifyContent: "center",
+                                alignItems: "center",
+                            }}
+                            className="timer-colon"
+                        >
+                            :
+                        </div>
+                        <input
+                            className="time-input"
+                            type="number"
+                            placeholder="MINUTES"
+                            value={minutes}
+                            onChange={(e) => {
+                                setMinutes(e.target.value)
+                            }}
+                        />
+                        <div
+                            style={{
+                                display: "flex",
+                                flexDirection: "column",
+                                justifyContent: "center",
+                                alignItems: "center",
+                            }}
+                            className="timer-colon"
+                        >
+                            :
+                        </div>
+                        <input
+                            className="time-input"
+                            type="number"
+                            placeholder="SECONDS"
+                            value={seconds}
+                            onChange={(e) => {
+                                setSeconds(e.target.value)
+                            }}
+                        />
+                    </div>
+                </div>
+                <div
+                    className="new-safe-form-row"
+                    style={{
+                        width: "100%",
+                        display: "flex",
+                        flexDirection: "row",
+                        alignItems: "center",
+                        justifyContent: "center",
+                    }}
+                >
+                    <button
+                        className="button-18"
+                        disabled={
+                            createSafeIsFetching ||
+                            createSafeIsLoading ||
+                            ((!seconds || parseFloat(seconds) == 0) &&
+                                (!minutes || parseFloat(minutes) == 0) &&
+                                (!hours || parseFloat(hours) == 0) &&
+                                (!days || parseFloat(days) == 0)) ||
+                            !amount ||
+                            parseFloat(amount) == 0
+                        }
+                        onClick={handleCreate}
+                    >
+                        CREATE SAFE
+                    </button>
+                </div>
             </div>
         </div>
     )
