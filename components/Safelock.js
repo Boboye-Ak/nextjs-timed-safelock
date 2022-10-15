@@ -78,7 +78,7 @@ const Safelock = ({ mySafelockId, mySafelockAddress }) => {
                             justifyContent: "center",
                         }}
                     >
-                        SHOW BROKEN SAFES
+                        BROKEN SAFES
                         <Switch
                             isToggled={showBroken}
                             onToggle={() => {

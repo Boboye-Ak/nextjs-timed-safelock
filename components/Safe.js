@@ -7,11 +7,12 @@ const Safe = ({ safeIndex, safeAmount, endTime, safelockAddress, isBroken }) => 
         <div
             className="safe"
             style={{
-                border: "solid",
+                border:"solid",
+                borderWidth:"thin",
                 display: "flex",
                 flexDirection: "row",
                 justifyContent: "space-between",
-                alignItems:"center"
+                alignItems: "center",
             }}
         >
             Safe #{safeIndex}

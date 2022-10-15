@@ -70,7 +70,7 @@ const NewSafeForm = ({ safelockAddress, updateUI, toggleNewSafeForm }) => {
         updateParams()
     }, [seconds, minutes, hours, days, amount])
     return (
-        <div
+        <div className="new-safe-form"
             style={{
                 border: "solid",
                 display: "flex",

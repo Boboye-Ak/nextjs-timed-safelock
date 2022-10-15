@@ -6,6 +6,8 @@ import "../styles/switch.css"
 import "../styles/safelock.css"
 import "../styles/buttons.css"
 import "../styles/safe.css"
+import "../styles/timer.css"
+import "../styles/newsafeform.css"
 
 function MyApp({ Component, pageProps }) {
     return (

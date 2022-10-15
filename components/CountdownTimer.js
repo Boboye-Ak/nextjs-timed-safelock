@@ -41,7 +41,7 @@ const CountdownTimer = ({ endTime, safeIndex, safelockAddress, isBroken }) => {
         <div style={{ display: "flex", flexDirection: "row", alignItems: "center" }}>
             {!isTimeUp ? (
                 <>
-                    <div>Time Till Withdrawal:</div>
+                    <div>Time Left:</div>
                     <div
                         style={{
                             display: "flex",
@@ -49,8 +49,9 @@ const CountdownTimer = ({ endTime, safeIndex, safelockAddress, isBroken }) => {
                             justifyContent: "center",
                             alignItems: "center",
                         }}
+                        className="timer-subgroup"
                     >
-                        <div>{timerDays}</div>
+                        <div className="timer-digits">{timerDays}</div>
                         <small>days</small>
                     </div>
                     <div
@@ -60,9 +61,9 @@ const CountdownTimer = ({ endTime, safeIndex, safelockAddress, isBroken }) => {
                             justifyContent: "center",
                             alignItems: "center",
                         }}
+                        className="timer-subgroup"
                     >
-                        <div>{timerHours}</div>
-                        <small>hours</small>
+                        :
                     </div>
                     <div
                         style={{
@@ -71,9 +72,10 @@ const CountdownTimer = ({ endTime, safeIndex, safelockAddress, isBroken }) => {
                             justifyContent: "center",
                             alignItems: "center",
                         }}
+                        className="timer-subgroup"
                     >
-                        <div>{timerMinutes}</div>
-                        <small>minutes</small>
+                        <div className="timer-digits">{timerHours}</div>
+                        <small>hrs</small>
                     </div>
                     <div
                         style={{
@@ -82,13 +84,52 @@ const CountdownTimer = ({ endTime, safeIndex, safelockAddress, isBroken }) => {
                             justifyContent: "center",
                             alignItems: "center",
                         }}
+                        className="timer-subgroup"
                     >
-                        <div>{timerSeconds}</div>
-                        <small>seconds</small>
+                        :
+                    </div>
+                    <div
+                        style={{
+                            display: "flex",
+                            flexDirection: "column",
+                            justifyContent: "center",
+                            alignItems: "center",
+                        }}
+                        className="timer-subgroup"
+                    >
+                        <div className="timer-digits">{timerMinutes}</div>
+                        <small>mins</small>
+                    </div>
+                    <div
+                        style={{
+                            display: "flex",
+                            flexDirection: "column",
+                            justifyContent: "center",
+                            alignItems: "center",
+                        }}
+                        className="timer-subgroup"
+                    >
+                        :
+                    </div>
+                    <div
+                        style={{
+                            display: "flex",
+                            flexDirection: "column",
+                            justifyContent: "center",
+                            alignItems: "center",
+                        }}
+                        className="timer-subgroup"
+                    >
+                        <div className="timer-digits">{timerSeconds}</div>
+                        <small>secs</small>
                     </div>
                 </>
             ) : (
-                <WithdrawButton safeIndex={safeIndex} safelockAddress={safelockAddress} isBroken={isBroken} />
+                <WithdrawButton
+                    safeIndex={safeIndex}
+                    safelockAddress={safelockAddress}
+                    isBroken={isBroken}
+                />
             )}
         </div>
     )

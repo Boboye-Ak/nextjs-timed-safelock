@@ -1,5 +1,14 @@
 @font-face {
-    font-family: "digital-clock-font";
-    src: url("https://www.1001fonts.com/digital-7-font.html");
+    font-family: digital;
+    src: url(fonts/digital-7.ttf);
 }
 
+.timer-digits {
+    font-family: digital;
+    font-weight: bolder;
+}
+
+.timer-subgroup {
+    margin-left: 5px;
+    margin-right: 5px;
+}

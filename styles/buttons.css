@@ -131,8 +131,10 @@
     font-size: 20px;
     border-radius: 10px;
     background-color: #0a66c2;
+    box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5);
     color: white;
 }
 .add-safe-button:hover {
     background-color: #16437e;
+    
 }
