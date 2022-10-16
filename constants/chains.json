@@ -1,10 +1,27 @@
 {
     "chains": [
         { "chainId": "1", "name": "Ethereum Mainnet", "blockExplorerUrl": "https://etherscan.io" },
-        { "chainId": "137", "name": "Polygon Mainnet", "blockExplorerUrl": "https://polygonscan.com" },
+        {
+            "chainId": "137",
+            "name": "Polygon Mainnet",
+            "blockExplorerUrl": "https://polygonscan.com"
+        },
         { "chainId": "4", "name": "Rinkeby", "blockExplorerUrl": "https://rinkeby.etherscan.io" },
         { "chainId": "5", "name": "Goerli", "blockExplorerUrl": "https://goerli.etherscan.io" },
-        { "chainId": "11155111", "name": "Sepolia", "blockExplorerUrl": "https://sepolia.etherscan.io" },
-        {"chainId":"80001", "name":"Polygon Mumbai", "blockExplorerUrl":"https://mumbai.polygonscan.com"}
+        {
+            "chainId": "11155111",
+            "name": "Sepolia",
+            "blockExplorerUrl": "https://sepolia.etherscan.io"
+        },
+        {
+            "chainId": "31337",
+            "name": "LocalHost",
+            "blockExplorerUrl": ""
+        },
+        {
+            "chainId": "80001",
+            "name": "Polygon Mumbai",
+            "blockExplorerUrl": "https://mumbai.polygonscan.com"
+        }
     ]
 }
