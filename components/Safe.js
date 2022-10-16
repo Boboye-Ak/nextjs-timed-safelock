@@ -3,7 +3,7 @@ import { convertToEth } from "../utils/converter"
 import { RiSafe2Line } from "react-icons/ri"
 import { Icon } from "@iconify/react"
 
-const Safe = ({ safeIndex, safeAmount, endTime, safelockAddress, isBroken }) => {
+const Safe = ({ safeIndex, safeAmount, endTime, safelockAddress, isBroken, updateUI }) => {
     return (
         <div
             className="safe"
@@ -43,6 +43,7 @@ const Safe = ({ safeIndex, safeAmount, endTime, safelockAddress, isBroken }) => 
                 safeIndex={safeIndex}
                 safelockAddress={safelockAddress}
                 isBroken={isBroken}
+                updateUI={updateUI}
             />
         </div>
     )

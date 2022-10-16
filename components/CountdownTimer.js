@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import WithdrawButton from "./WithdrawButton"
 
-const CountdownTimer = ({ endTime, safeIndex, safelockAddress, isBroken }) => {
+const CountdownTimer = ({ endTime, safeIndex, safelockAddress, isBroken, updateUI }) => {
     const [timerDays, setTimerDays] = useState(88)
     const [timerHours, setTimerHours] = useState(88)
     const [timerMinutes, setTimerMinutes] = useState(88)
@@ -129,6 +129,7 @@ const CountdownTimer = ({ endTime, safeIndex, safelockAddress, isBroken }) => {
                     safeIndex={safeIndex}
                     safelockAddress={safelockAddress}
                     isBroken={isBroken}
+                    updateUI={updateUI}
                 />
             )}
         </div>

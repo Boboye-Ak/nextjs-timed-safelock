@@ -48,6 +48,7 @@ const CreateSafelock = ({ updateUI }) => {
             }}
         >
             <input
+                className="name-input-bar"
                 type="text"
                 placeholder="YOUR FIRST NAME"
                 value={firstName}
@@ -56,6 +57,7 @@ const CreateSafelock = ({ updateUI }) => {
                 }}
             />
             <button
+                className="create-safelock-button glow-on-hover"
                 onClick={handleCreate}
                 disabled={
                     !firstName ||

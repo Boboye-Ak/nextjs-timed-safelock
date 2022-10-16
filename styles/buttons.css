@@ -144,6 +144,7 @@
     align-items: center;
     width: 200px;
     height: 100px;
+    padding: 5px;
     border: solid;
     border-radius: 20px;
     background-color: #0a66c2;
@@ -162,6 +163,9 @@
 
 .cancel-button {
     display: flex;
+    font-size: larger;
+    font-weight: bolder;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     border: solid;

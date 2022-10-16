@@ -18,7 +18,7 @@ const Safelock = ({ mySafelockId, mySafelockAddress }) => {
     const [firstName, setFirstName] = useState([])
     const [showBroken, setShowBroken] = useState(false)
     const [showNewSafeForm, setShowNewSafeForm] = useState(false)
-    const [showSafelockAddress, setShowSafelockAddress] = useState(true)
+    const [showSafelockAddress, setShowSafelockAddress] = useState(false)
     //Web3 functions
     const {
         runContractFunction: getSafes,
@@ -84,18 +84,19 @@ const Safelock = ({ mySafelockId, mySafelockAddress }) => {
                     </span>
                     <div
                         className={`add-safe-info ${!showSafelockAddress && "hidden"}`}
-                        style={{ width: "auto", position: "absolute" }}
+                        style={{ width: "auto", position: "absolute", left: "35%" }}
                     >
                         Safelock Address is {mySafelockAddress}
                     </div>
                 </div>
-                {safes.length > 0 && (
+                {
                     <div
                         style={{
                             display: "flex",
                             flexDirection: "row",
                             alignItems: "center",
                             justifyContent: "center",
+                            opacity: safes.length > 0 ? "1" : "0",
                         }}
                     >
                         OPENED SAFES
@@ -106,7 +107,7 @@ const Safelock = ({ mySafelockId, mySafelockAddress }) => {
                             }}
                         />
                     </div>
-                )}
+                }
             </div>
 
             {safes?.length <= 0 && <NoSafes />}
@@ -122,6 +123,7 @@ const Safelock = ({ mySafelockId, mySafelockAddress }) => {
                                   parseInt(safe.timeLength?.toString())
                               }
                               isBroken={safe.isBroken}
+                              updateUI={updateUI}
                           />
                       )
                   })

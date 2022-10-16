@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 import { useMoralis, useWeb3Contract } from "react-moralis"
+import { Icon } from "@iconify/react"
 import { safelockFactoryAddresses, safelockFactoryABI, safelockABI } from "../constants"
 import { convertToWei } from "../utils/converter"
 
@@ -90,7 +91,7 @@ const NewSafeForm = ({ safelockAddress, updateUI, toggleNewSafeForm }) => {
                 }}
             >
                 <div className="cancel-button" onClick={toggleNewSafeForm}>
-                    x
+                    X
                 </div>
             </div>
             <div
@@ -113,14 +114,25 @@ const NewSafeForm = ({ safelockAddress, updateUI, toggleNewSafeForm }) => {
                         justifyContent: "space-between",
                     }}
                 >
-                    <input
-                        type="number"
-                        placeholder="AMOUNT"
-                        onChange={(e) => {
-                            setAmount(e.target.value)
+                    <div
+                        style={{
+                            display: "flex",
+                            flexDirection: "row",
+                            justifyContent: "center",
+                            alignItems: "center",
                         }}
-                    />
-                    <div style={{display:"flex"}}>
+                    >
+                        <input
+                            style={{ height: "100%" }}
+                            type="number"
+                            placeholder="AMOUNT"
+                            onChange={(e) => {
+                                setAmount(e.target.value)
+                            }}
+                        />
+                        <Icon icon="cryptocurrency:matic" fontSize="40px" />
+                    </div>
+                    <div style={{ display: "flex" }}>
                         <input
                             className="time-input"
                             type="number"
@@ -206,6 +218,7 @@ const NewSafeForm = ({ safelockAddress, updateUI, toggleNewSafeForm }) => {
                         className="button-18"
                         disabled={
                             createSafeIsFetching ||
+                            isAwaitingConfirmation ||
                             createSafeIsLoading ||
                             ((!seconds || parseFloat(seconds) == 0) &&
                                 (!minutes || parseFloat(minutes) == 0) &&

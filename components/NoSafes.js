@@ -8,6 +8,8 @@ const NoSafes = () => {
                 alignItems: "center",
                 justifyContent: "center",
             }}
+
+            className="no-safes"
         >
             YOU DO NOT HAVE ANY SAFES...YET
         </div>

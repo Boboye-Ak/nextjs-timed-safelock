@@ -2,7 +2,7 @@ import { safelockABI } from "../constants"
 import { useMoralis, useWeb3Contract } from "react-moralis"
 import { useState } from "react"
 
-const WithdrawButton = ({ safeIndex, safelockAddress, isBroken }) => {
+const WithdrawButton = ({ safeIndex, safelockAddress, isBroken, updateUI }) => {
     const [isAwaitingConfirmation, setIsAwaitingConfirmation] = useState(false)
     //Web3 functions
     const {
@@ -23,6 +23,7 @@ const WithdrawButton = ({ safeIndex, safelockAddress, isBroken }) => {
                 setIsAwaitingConfirmation(true)
                 await tx.wait(1)
                 setIsAwaitingConfirmation(false)
+                updateUI()
             },
         })
     }
