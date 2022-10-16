@@ -45,7 +45,6 @@ const Safelock = ({ mySafelockId, mySafelockAddress }) => {
     //Web2 Functions
     const updateUI = async () => {
         safesFromCall = await getSafes()
-        console.log(safesFromCall)
         setSafes(safesFromCall)
         const firstNameFromCall = await getOwnerFirstName()
         setFirstName(firstNameFromCall)

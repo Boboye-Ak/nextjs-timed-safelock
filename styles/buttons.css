@@ -169,12 +169,13 @@
     justify-content: center;
     align-items: center;
     border: solid;
-    border-width: thin;
+    margin-top: 4px;
     width: 30px;
     height: 30px;
     font-size: 15px;
     border-radius: 50%;
     cursor: pointer;
+    transition: 0.2s;
 }
 
 .cancel-button:hover {

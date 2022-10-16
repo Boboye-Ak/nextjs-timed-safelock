@@ -19,6 +19,14 @@
     height: 50px;
     margin-top: 20px;
     margin-bottom: 20px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    justify-content: space-between;
+}
+.new-safe-form .button {
+    justify-content: center;
 }
 
 .time-input {
@@ -28,4 +36,32 @@
     margin-right: 3px;
     font-family: digital;
     font-size: 23px;
+}
+
+.amount-input-div {
+    font-size: 30px;
+}
+
+.amount-input {
+    font-size: 20px;
+}
+
+@media only screen and (max-width: 768px) {
+    /* For mobile phones: */
+    .new-safe-form-row {
+        height: auto;
+        margin-bottom: 0px;
+        flex-direction: column;
+        align-items: center;
+    }
+    .time-input {
+        width: 60px;
+        height: 30px;
+        font-size: 20px;
+    }
+    .amount-input {
+        width: 150px;
+        margin-bottom: 10px;
+        font-size: 20px;
+    }
 }

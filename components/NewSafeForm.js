@@ -75,6 +75,7 @@ const NewSafeForm = ({ safelockAddress, updateUI, toggleNewSafeForm }) => {
             className="new-safe-form"
             style={{
                 border: "solid",
+                borderWidth: "thin",
                 display: "flex",
                 flexDirection: "column",
                 alignItems: "center",
@@ -104,16 +105,7 @@ const NewSafeForm = ({ safelockAddress, updateUI, toggleNewSafeForm }) => {
                 }}
                 className="new-safe-form-main"
             >
-                <div
-                    className="new-safe-form-row"
-                    style={{
-                        width: "100%",
-                        display: "flex",
-                        flexDirection: "row",
-                        alignItems: "stretch",
-                        justifyContent: "space-between",
-                    }}
-                >
+                <div className="new-safe-form-row">
                     <div
                         style={{
                             display: "flex",
@@ -121,8 +113,10 @@ const NewSafeForm = ({ safelockAddress, updateUI, toggleNewSafeForm }) => {
                             justifyContent: "center",
                             alignItems: "center",
                         }}
+                        className="amount-input-div"
                     >
                         <input
+                            className="amount-input"
                             style={{ height: "100%" }}
                             type="number"
                             placeholder="AMOUNT"
@@ -130,7 +124,8 @@ const NewSafeForm = ({ safelockAddress, updateUI, toggleNewSafeForm }) => {
                                 setAmount(e.target.value)
                             }}
                         />
-                        <Icon icon="cryptocurrency:matic" fontSize="40px" />
+                        <span> </span>
+                        <Icon icon="cryptocurrency:matic" />
                     </div>
                     <div style={{ display: "flex" }}>
                         <input
@@ -204,16 +199,7 @@ const NewSafeForm = ({ safelockAddress, updateUI, toggleNewSafeForm }) => {
                         />
                     </div>
                 </div>
-                <div
-                    className="new-safe-form-row"
-                    style={{
-                        width: "100%",
-                        display: "flex",
-                        flexDirection: "row",
-                        alignItems: "center",
-                        justifyContent: "center",
-                    }}
-                >
+                <div className="new-safe-form-row button">
                     <button
                         className="button-18"
                         disabled={

@@ -34,10 +34,13 @@ const Safe = ({ safeIndex, safeAmount, endTime, safelockAddress, isBroken, updat
                     alignItems: "center",
                 }}
             >
-                {convertToEth(safeAmount)} {"  "}
-                <Icon icon="cryptocurrency:matic" />
+                {convertToEth(safeAmount)} <Icon icon="cryptocurrency:matic" />
             </div>
-            {isBroken && <RiSafe2Line size="2em" />}
+            
+                <div style={{ opacity: isBroken ? "1" : "0" }}>
+                    <RiSafe2Line size="2em" />
+                </div>
+            
             <CountdownTimer
                 endTime={endTime}
                 safeIndex={safeIndex}

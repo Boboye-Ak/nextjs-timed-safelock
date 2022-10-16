@@ -11,3 +11,14 @@
     border-radius: solid;
     cursor: pointer;
 }
+
+@media only screen and (max-width: 768px) {
+    /* For mobile phones: */
+    .greeting {
+        font-size: 20px;
+    }
+
+    .safelock-id {
+        display: none;
+    }
+}
