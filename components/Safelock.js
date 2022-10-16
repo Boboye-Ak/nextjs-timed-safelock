@@ -160,7 +160,7 @@ const Safelock = ({ safelockId, safelockAddress, safelockOwner }) => {
                     toggleNewSafeForm={toggleNewSafeForm}
                 />
             )}
-            {!showNewSafeForm && (
+            {!showNewSafeForm && isOwner && (
                 <AddSafe
                     onClick={() => {
                         toggleNewSafeForm()
