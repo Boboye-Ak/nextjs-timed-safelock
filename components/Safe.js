@@ -3,7 +3,17 @@ import { convertToEth } from "../utils/converter"
 import { RiSafe2Line } from "react-icons/ri"
 import { Icon } from "@iconify/react"
 
-const Safe = ({ safeIndex, safeAmount, endTime, safelockAddress, isBroken, updateUI }) => {
+const Safe = ({
+    safeIndex,
+    safeAmount,
+    endTime,
+    safelockAddress,
+    safelockOwner,
+    isBroken,
+    beneficiary,
+    isOwner,
+    updateUI,
+}) => {
     return (
         <div
             className="safe"
@@ -36,16 +46,18 @@ const Safe = ({ safeIndex, safeAmount, endTime, safelockAddress, isBroken, updat
             >
                 {convertToEth(safeAmount)} <Icon icon="cryptocurrency:matic" />
             </div>
-            
-                <div style={{ opacity: isBroken ? "1" : "0" }}>
-                    <RiSafe2Line size="2em" />
-                </div>
-            
+
+            <div style={{ opacity: isBroken ? "1" : "0" }}>
+                <RiSafe2Line size="2em" />
+            </div>
+
             <CountdownTimer
                 endTime={endTime}
                 safeIndex={safeIndex}
                 safelockAddress={safelockAddress}
+                isOwner={isOwner}
                 isBroken={isBroken}
+                beneficiary={beneficiary}
                 updateUI={updateUI}
             />
         </div>

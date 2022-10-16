@@ -8,7 +8,7 @@ import NoSafes from "./NoSafes"
 import Safe from "./Safe"
 import Switch from "./Switch"
 
-const Safelock = ({ mySafelockId, mySafelockAddress }) => {
+const Safelock = ({ safelockId, safelockAddress, safelockOwner }) => {
     const { chainId: chainIdHex, isWeb3Enabled, account } = useMoralis()
     const chainId = parseInt(chainIdHex)
     const safelockFactoryAddress =
@@ -19,14 +19,15 @@ const Safelock = ({ mySafelockId, mySafelockAddress }) => {
     const [showBroken, setShowBroken] = useState(false)
     const [showNewSafeForm, setShowNewSafeForm] = useState(false)
     const [showSafelockAddress, setShowSafelockAddress] = useState(false)
+    const [isOwner, setIsOwner] = useState(false)
     //Web3 functions
     const {
         runContractFunction: getSafes,
-        isFetching: getMySafelockIdIsFetching,
-        isLoading: getMySafelockIdIsLoading,
+        isFetching: getSafesIsFetching,
+        isLoading: getSafesIsLoading,
     } = useWeb3Contract({
         abi: safelockABI,
-        contractAddress: mySafelockAddress,
+        contractAddress: safelockAddress,
         functionName: "getSafes",
         params: {},
     })
@@ -36,7 +37,7 @@ const Safelock = ({ mySafelockId, mySafelockAddress }) => {
         isLoading: getOwnerFirstNameIsLoading,
     } = useWeb3Contract({
         abi: safelockABI,
-        contractAddress: mySafelockAddress,
+        contractAddress: safelockAddress,
         functionName: "getOwnerFirstName",
         params: {},
     })
@@ -48,16 +49,17 @@ const Safelock = ({ mySafelockId, mySafelockAddress }) => {
         setSafes(safesFromCall)
         const firstNameFromCall = await getOwnerFirstName()
         setFirstName(firstNameFromCall)
+        setIsOwner(account?.toLowerCase() == safelockOwner?.toLowerCase())
     }
     const toggleNewSafeForm = () => {
         setShowNewSafeForm(!showNewSafeForm)
     }
 
     useEffect(() => {
-        if ((isWeb3Enabled, mySafelockAddress)) {
+        if ((isWeb3Enabled, safelockAddress)) {
             updateUI()
         }
-    }, [mySafelockAddress, isWeb3Enabled, showBroken, account])
+    }, [safelockAddress, isWeb3Enabled, showBroken, account])
     return (
         <div>
             <div
@@ -68,7 +70,9 @@ const Safelock = ({ mySafelockId, mySafelockAddress }) => {
                     justifyContent: "space-between",
                 }}
             >
-                <span className="greeting">Hello {firstName},</span>{" "}
+                <span className="greeting">
+                    {isOwner ? <>Hello {firstName},</> : <>{firstName}'s Safelock</>}
+                </span>{" "}
                 <div>
                     <span
                         className="safelock-id"
@@ -79,13 +83,13 @@ const Safelock = ({ mySafelockId, mySafelockAddress }) => {
                             setShowSafelockAddress(false)
                         }}
                     >
-                        Safelock #{mySafelockId}
+                        Safelock #{safelockId}
                     </span>
                     <div
                         className={`add-safe-info ${!showSafelockAddress && "hidden"}`}
                         style={{ width: "auto", position: "absolute", left: "35%" }}
                     >
-                        Safelock Address is {mySafelockAddress}
+                        Safelock Address is {safelockAddress}
                     </div>
                 </div>
                 {
@@ -115,13 +119,16 @@ const Safelock = ({ mySafelockId, mySafelockAddress }) => {
                       return (
                           <Safe
                               safeIndex={index}
-                              safelockAddress={mySafelockAddress}
+                              safelockAddress={safelockAddress}
                               safeAmount={parseInt(safe.amount?.toString())}
                               endTime={
                                   parseInt(safe.createdTime?.toString()) +
                                   parseInt(safe.timeLength?.toString())
                               }
                               isBroken={safe.isBroken}
+                              beneficiary={safe.beneficiary?.toString()}
+                              isOwner={isOwner}
+                              safelockOwner={safelockOwner}
                               updateUI={updateUI}
                           />
                       )
@@ -131,20 +138,24 @@ const Safelock = ({ mySafelockId, mySafelockAddress }) => {
                           return (
                               <Safe
                                   safeIndex={index}
-                                  safelockAddress={mySafelockAddress}
+                                  safelockAddress={safelockAddress}
                                   safeAmount={parseInt(safe.amount?.toString())}
                                   endTime={
                                       parseInt(safe.createdTime?.toString()) +
                                       parseInt(safe.timeLength?.toString())
                                   }
                                   isBroken={safe.isBroken}
+                                  beneficiary={safe.beneficiary?.toString()}
+                                  isOwner={isOwner}
+                                  safelockOwner={safelockOwner}
+                                  updateUI={updateUI}
                               />
                           )
                       }
                   })}
             {showNewSafeForm && (
                 <NewSafeForm
-                    safelockAddress={mySafelockAddress}
+                    safelockAddress={safelockAddress}
                     updateUI={updateUI}
                     toggleNewSafeForm={toggleNewSafeForm}
                 />

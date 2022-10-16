@@ -60,7 +60,7 @@ const MySafelock = () => {
             <Header />
             {account ? (
                 mySafelockId && mySafelockAddress ? (
-                    <Safelock mySafelockId={mySafelockId} mySafelockAddress={mySafelockAddress} />
+                    <Safelock safelockId={mySafelockId} safelockAddress={mySafelockAddress} safelockOwner={account} />
                 ) : (
                     <YouDontHaveASafelock />
                 )

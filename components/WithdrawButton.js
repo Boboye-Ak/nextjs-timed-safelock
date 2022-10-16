@@ -2,7 +2,15 @@ import { safelockABI } from "../constants"
 import { useMoralis, useWeb3Contract } from "react-moralis"
 import { useState } from "react"
 
-const WithdrawButton = ({ safeIndex, safelockAddress, isBroken, updateUI }) => {
+const WithdrawButton = ({
+    safeIndex,
+    safelockAddress,
+    isBroken,
+    isOwner,
+    beneficiary,
+    updateUI,
+}) => {
+    const { chainId: chainIdHex, isWeb3Enabled, account } = useMoralis()
     const [isAwaitingConfirmation, setIsAwaitingConfirmation] = useState(false)
     //Web3 functions
     const {
@@ -33,7 +41,11 @@ const WithdrawButton = ({ safeIndex, safelockAddress, isBroken, updateUI }) => {
                 className="button-18"
                 onClick={handleWithdraw}
                 disabled={
-                    withdrawIsFetching || withdrawIsLoading || isAwaitingConfirmation || isBroken
+                    withdrawIsFetching ||
+                    withdrawIsLoading ||
+                    isAwaitingConfirmation ||
+                    isBroken ||
+                    (!isOwner && account?.toLowerCase() != beneficiary)
                 }
             >
                 WITHDRAW
