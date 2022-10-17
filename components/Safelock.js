@@ -1,3 +1,4 @@
+import { Icon } from "@iconify/react"
 import { useEffect, useState } from "react"
 import { useMoralis, useWeb3Contract } from "react-moralis"
 import { safelockFactoryAddresses, safelockFactoryABI, safelockABI } from "../constants"
@@ -83,7 +84,7 @@ const Safelock = ({ safelockId, safelockAddress, safelockOwner }) => {
                             setShowSafelockAddress(false)
                         }}
                     >
-                        Safelock #{safelockId}
+                        Safelock #{safelockId}<span><Icon icon="cil:share-alt"/></span>
                     </span>
                     <div
                         className={`add-safe-info ${!showSafelockAddress && "hidden"}`}
@@ -156,7 +157,7 @@ const Safelock = ({ safelockId, safelockAddress, safelockOwner }) => {
                           )
                       }
                   })}
-            {showNewSafeForm && (
+            {showNewSafeForm && isOwner && (
                 <NewSafeForm
                     safelockAddress={safelockAddress}
                     updateUI={updateUI}

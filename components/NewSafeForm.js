@@ -33,7 +33,7 @@ const NewSafeForm = ({ safelockAddress, updateUI, toggleNewSafeForm }) => {
         functionName: "createSafe",
         params: {
             _timeLength: totalTImeInSeconds,
-            beneficiary: showBeneficiary ? beneficiary : account,
+            _beneficiary: showBeneficiary ? beneficiary : account,
         },
         msgValue: amountInWei,
     })
@@ -59,6 +59,7 @@ const NewSafeForm = ({ safelockAddress, updateUI, toggleNewSafeForm }) => {
     }
     const resetParams = () => {
         setAmount("")
+        setBeneficiary("")
         setDays("")
         setHours("")
         setMinutes("")
@@ -66,6 +67,7 @@ const NewSafeForm = ({ safelockAddress, updateUI, toggleNewSafeForm }) => {
     }
 
     const handleCreate = async () => {
+        console.log("creating safe...")
         await createSafe({
             onSuccess: async (tx) => {
                 setIsAwaitingConfirmation(true)
