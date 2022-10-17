@@ -118,6 +118,7 @@ const Safelock = ({ safelockId, safelockAddress, safelockOwner }) => {
                 ? safes.map((safe, index) => {
                       return (
                           <Safe
+                              key={index}
                               safeIndex={index}
                               safelockAddress={safelockAddress}
                               safeAmount={parseInt(safe.amount?.toString())}
@@ -137,6 +138,7 @@ const Safelock = ({ safelockId, safelockAddress, safelockOwner }) => {
                       if (!safe.isBroken) {
                           return (
                               <Safe
+                              key={index}
                                   safeIndex={index}
                                   safelockAddress={safelockAddress}
                                   safeAmount={parseInt(safe.amount?.toString())}
