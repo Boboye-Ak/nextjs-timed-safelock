@@ -1,6 +1,6 @@
 import { useState } from "react"
 
-const Switch = ({ isToggled, onToggle }) => {
+const Switch = ({ isToggled, onToggle, info }) => {
     const [showInfo, setShowInfo] = useState(false)
     return (
         <div>
@@ -16,15 +16,17 @@ const Switch = ({ isToggled, onToggle }) => {
                 <input type="checkbox" checked={isToggled} onChange={onToggle} />
                 <span className="slider" />
             </label>
-            <div
-                className={`add-safe-info ${!showInfo && "hidden"}`}
-                style={{
-                    position: "absolute",
-                    right: "50px",
-                }}
-            >
-                Toggle to See Opened Safes
-            </div>
+            {info && (
+                <div
+                    className={`add-safe-info ${!showInfo && "hidden"}`}
+                    style={{
+                        position: "absolute",
+                        right: "50px",
+                    }}
+                >
+                    {info}
+                </div>
+            )}
         </div>
     )
 }

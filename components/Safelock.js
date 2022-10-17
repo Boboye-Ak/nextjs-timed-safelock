@@ -108,6 +108,7 @@ const Safelock = ({ safelockId, safelockAddress, safelockOwner }) => {
                             onToggle={() => {
                                 setShowBroken(!showBroken)
                             }}
+                            info="Toggle to Show Opened Safes"
                         />
                     </div>
                 }
@@ -138,7 +139,7 @@ const Safelock = ({ safelockId, safelockAddress, safelockOwner }) => {
                       if (!safe.isBroken) {
                           return (
                               <Safe
-                              key={index}
+                                  key={index}
                                   safeIndex={index}
                                   safelockAddress={safelockAddress}
                                   safeAmount={parseInt(safe.amount?.toString())}

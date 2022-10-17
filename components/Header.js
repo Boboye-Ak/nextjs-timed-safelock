@@ -4,8 +4,10 @@ import { useState } from "react"
 import { ConnectButton } from "web3uikit"
 import { safelockFactoryABI, safelockFactoryAddresses } from "../constants"
 import { useWeb3Contract, useMoralis } from "react-moralis"
+import { useRouter } from "next/router"
 
 const Header = () => {
+    const router = useRouter()
     const { chainId: chainIdHex, isWeb3Enabled, account } = useMoralis()
     const chainId = parseInt(chainIdHex)
     const safelockFactoryAddress =
@@ -95,9 +97,8 @@ const Header = () => {
                         onChange={(e) => {
                             setSearchInput(e.target.value)
                         }}
-
-                        onBlur={()=>{
-                            if(!searchInput){
+                        onBlur={() => {
+                            if (!searchInput) {
                                 setHasResult(false)
                                 setIsSearched(false)
                             }
@@ -121,7 +122,15 @@ const Header = () => {
                         Enter ID or Address of safelock you are looking for
                     </div>
                 )}
-                <div className={`search-result ${(!isSearched || !hasResult) && "hidden"}`}>
+                <div
+                    className={`search-result ${(!isSearched || !hasResult) && "hidden"}`}
+                    style={{
+                        cursor:"pointer"
+                    }}
+                    onClick={() => {
+                        router.push(`/safelocks/${searchResultAddress}`)
+                    }}
+                >
                     {searchResultAddress}
                 </div>
                 {
