@@ -23,6 +23,12 @@ const ShareModal = () => {
             <div className="share-icon">
                 <Icon icon="carbon:email" />
             </div>
+            <div className="share-icon">
+                <Icon icon="akar-icons:twitter-fill" />
+            </div>
+            <div className="share-icon">
+                <Icon icon="akar-icons:whatsapp-fill" />
+            </div>
         </div>
     )
 }

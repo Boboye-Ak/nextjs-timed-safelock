@@ -1,6 +1,6 @@
 .glow-on-hover {
-    width: 300px;
-    height: 70px;
+    width: 22vw;
+    height: 9vh;
     border: none;
     outline: none;
     color: #fff;
@@ -143,8 +143,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 200px;
-    height: 100px;
+    width: 14.6vw;
+    height: 13vh;
     padding: 5px;
     border: solid;
     border-radius: 20px;
@@ -167,8 +167,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 400px;
-    height: 50px;
+    width: 30vw;
+    height: 6.5vh;
     padding: 5px;
     border: solid;
     font-size: 13px;
@@ -226,8 +226,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 300px;
-    height: 100px;
+    width: 22vw;
+    height: 13vh;
     padding: 5px;
     border: solid;
     border-radius: 20px;

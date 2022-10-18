@@ -1,13 +1,13 @@
 .name-input-bar {
-    width: 500px;
-    height: 50px;
+    width: 37vw;
+    height: 6.5vh;
     border-radius: 12px;
     margin-bottom: 5px;
 }
 
 .create-safelock-button {
-    width: 500px;
-    height: 50px;
+    width: 37vw;
+    height: 6.5vh;
     border-radius: 12px;
     margin-top: 5px;
 }

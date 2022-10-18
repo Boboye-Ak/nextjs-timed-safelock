@@ -141,60 +141,7 @@ const NewSafeForm = ({ safelockAddress, updateUI, toggleNewSafeForm }) => {
                         <span> </span>
                         <Icon icon="cryptocurrency:matic" />
                     </div>
-                    <div
-                        style={{
-                            display: "flex",
-                            flexDirection: "row",
-                            justifyContent: "center",
-                            alignItems: "center",
-                        }}
-                    >
-                        {!showBeneficiary ? (
-                            <>
-                                <div
-                                    style={{
-                                        display: "flex",
-                                        flexDirection: "row",
-                                        justifyContent: "center",
-                                        alignItems: "center",
-                                    }}
-                                    className="beneficiary-input-div"
-                                >
-                                    Toggle on if the safe is for a third party
-                                </div>
-                            </>
-                        ) : (
-                            <>
-                                <div
-                                    style={{
-                                        display: "flex",
-                                        flexDirection: "row",
-                                        justifyContent: "center",
-                                        alignItems: "center",
-                                    }}
-                                    className="beneficiary-input-div"
-                                >
-                                    <input
-                                        className="amount-input"
-                                        style={{ height: "100%" }}
-                                        type="text"
-                                        placeholder="BENEFICIARY"
-                                        value={beneficiary}
-                                        onChange={(e) => {
-                                            setBeneficiary(e.target.value)
-                                        }}
-                                    />
-                                </div>
-                            </>
-                        )}
-                        <Switch
-                            isToggled={showBeneficiary}
-                            onToggle={() => {
-                                setShowBeneficiary(!showBeneficiary)
-                            }}
-                            info=""
-                        />
-                    </div>
+
                     <div style={{ display: "flex" }}>
                         <input
                             className="time-input"
@@ -264,6 +211,63 @@ const NewSafeForm = ({ safelockAddress, updateUI, toggleNewSafeForm }) => {
                             onChange={(e) => {
                                 setSeconds(e.target.value)
                             }}
+                        />
+                    </div>
+                </div>
+                <div className="new-safe-form-row button">
+                    {" "}
+                    <div
+                        style={{
+                            display: "flex",
+                            flexDirection: "row",
+                            justifyContent: "center",
+                            alignItems: "center",
+                        }}
+                    >
+                        {!showBeneficiary ? (
+                            <>
+                                <div
+                                    style={{
+                                        display: "flex",
+                                        flexDirection: "row",
+                                        justifyContent: "center",
+                                        alignItems: "center",
+                                    }}
+                                    className="beneficiary-input-div"
+                                >
+                                    Toggle on if the safe is for a third party
+                                </div>
+                            </>
+                        ) : (
+                            <>
+                                <div
+                                    style={{
+                                        display: "flex",
+                                        flexDirection: "row",
+                                        justifyContent: "center",
+                                        alignItems: "center",
+                                    }}
+                                    className="beneficiary-input-div"
+                                >
+                                    <input
+                                        className="amount-input"
+                                        style={{ height: "100%" }}
+                                        type="text"
+                                        placeholder="BENEFICIARY ADDRESS"
+                                        value={beneficiary}
+                                        onChange={(e) => {
+                                            setBeneficiary(e.target.value)
+                                        }}
+                                    />
+                                </div>
+                            </>
+                        )}
+                        <Switch
+                            isToggled={showBeneficiary}
+                            onToggle={() => {
+                                setShowBeneficiary(!showBeneficiary)
+                            }}
+                            info=""
                         />
                     </div>
                 </div>

@@ -4,6 +4,7 @@ import { useMoralis, useWeb3Contract } from "react-moralis"
 import { useEffect, useState } from "react"
 import { safelockFactoryAddresses, safelockFactoryABI, safelockABI } from "../../constants"
 import Safelock from "../../components/Safelock"
+import styles from "../../styles/Home.module.css"
 
 const safelockPage = ({}) => {
     const router = useRouter()
@@ -61,7 +62,7 @@ const safelockPage = ({}) => {
         }
     }, [id])
     return (
-        <div>
+        <div className={styles.container}>
             <Header />
             {id && safelockOwner ? (
                 <>
