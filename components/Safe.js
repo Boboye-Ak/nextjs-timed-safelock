@@ -27,12 +27,8 @@ const Safe = ({
             }}
         >
             <div
-                style={{
-                    display: "flex",
-                    flexDirection: "row",
-                    justifyContent: "center",
-                    alignItems: "center",
-                }}
+                className="safe-index pc-only"
+
             >
                 Safe #{safeIndex + 1}
             </div>

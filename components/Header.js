@@ -70,6 +70,7 @@ const Header = () => {
     return (
         <div
             style={{
+                display:"flex",
                 height: "10vh",
                 borderBottom: "solid",
                 display: "flex",
@@ -115,7 +116,7 @@ const Header = () => {
                 </div>
                 {!hasResult && !isSearched && (
                     <div
-                        className={`add-safe-info ${
+                        className={`add-safe-info pc-only ${
                             (!showInfo || isSearched || hasResult) && "hidden"
                         }`}
                     >
@@ -125,7 +126,7 @@ const Header = () => {
                 <div
                     className={`search-result ${(!isSearched || !hasResult) && "hidden"}`}
                     style={{
-                        cursor:"pointer"
+                        cursor: "pointer",
                     }}
                     onClick={() => {
                         router.push(`/safelocks/${searchResultAddress}`)

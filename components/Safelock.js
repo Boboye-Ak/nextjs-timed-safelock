@@ -86,13 +86,7 @@ const Safelock = ({ safelockId, safelockAddress, safelockOwner }) => {
                 >
                     <div>
                         <div
-                            style={{
-                                display: "flex",
-                                flexDirection: "row",
-                                justifyContent: "space-between",
-                                alignItems: "center",
-                            }}
-                            className="safelock-id"
+                            className="safelock-id pc-only"
                             onMouseEnter={() => {
                                 setShowSafelockAddress(true)
                             }}
@@ -103,7 +97,7 @@ const Safelock = ({ safelockId, safelockAddress, safelockOwner }) => {
                             <div>Safelock #{safelockId}</div>
                         </div>
                         <div
-                            className={`add-safe-info ${!showSafelockAddress && "hidden"}`}
+                            className={`add-safe-info pc-only ${!showSafelockAddress && "hidden"}`}
                             style={{ width: "auto", position: "absolute", left: "35%" }}
                         >
                             Safelock Address is {safelockAddress}
@@ -129,7 +123,6 @@ const Safelock = ({ safelockId, safelockAddress, safelockOwner }) => {
                         </div>
                         {
                             <div
-                                style={{ position: "absolute", left: "35%" }}
                                 className={
                                     showShareModal && !showSafelockAddress
                                         ? "share-modal-container"

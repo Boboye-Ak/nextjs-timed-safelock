@@ -221,7 +221,7 @@
     cursor: pointer;
 }
 .share-modal-container {
-    position: relative;
+    position: absolute;
     margin-top: 5px;
     display: flex;
     justify-content: center;
@@ -258,4 +258,19 @@
 }
 .share-icon:hover {
     font-size: 30px;
+}
+
+@media only screen and (max-width: 768px) {
+    /* For mobile phones: */
+    .share-modal-container {
+        width: auto;
+        height: 300px;
+    }
+    .share-modal{
+        height: 100%;
+        flex-direction: column;
+    }
+    .add-safe-info {
+        display: none;
+    }
 }

@@ -53,6 +53,9 @@
 
 @media only screen and (max-width: 768px) {
     /* For mobile phones: */
+    .new-safe-form{
+        height: 180px;
+    }
     .new-safe-form-row {
         height: auto;
         margin-bottom: 0px;
@@ -68,5 +71,8 @@
         width: 150px;
         margin-bottom: 10px;
         font-size: 20px;
+    }
+    .beneficiary-input-div input{
+        width: 200px;
     }
 }

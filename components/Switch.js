@@ -18,7 +18,7 @@ const Switch = ({ isToggled, onToggle, info }) => {
             </label>
             {info && (
                 <div
-                    className={`add-safe-info ${!showInfo && "hidden"}`}
+                    className={`add-safe-info pc-only ${!showInfo && "hidden"}`}
                     style={{
                         position: "absolute",
                         right: "50px",
