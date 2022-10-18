@@ -207,3 +207,36 @@
     background-color: red;
     color: white;
 }
+
+.share-button {
+    width: 30px;
+    height: 30px;
+    border: solid;
+    border-radius: 50%;
+}
+.share-modal-container {
+    position: relative;
+    margin-top: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 300px;
+    height: 100px;
+    padding: 5px;
+    border: solid;
+    border-radius: 20px;
+    background-color: #0a66c2;
+    color: white;
+    transition: 0.4s;
+    z-index: 5;
+    overflow-y: visible;
+}
+.share-modal-container.hidden {
+    font-size: 0;
+    opacity: 0;
+    height: 0;
+    width: 0;
+}
+
+.share-modal {
+}

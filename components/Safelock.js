@@ -7,6 +7,7 @@ import CountdownTimer from "./CountdownTimer"
 import NewSafeForm from "./NewSafeForm"
 import NoSafes from "./NoSafes"
 import Safe from "./Safe"
+import ShareModal from "./ShareModal"
 import Switch from "./Switch"
 
 const Safelock = ({ safelockId, safelockAddress, safelockOwner }) => {
@@ -21,6 +22,7 @@ const Safelock = ({ safelockId, safelockAddress, safelockOwner }) => {
     const [showNewSafeForm, setShowNewSafeForm] = useState(false)
     const [showSafelockAddress, setShowSafelockAddress] = useState(false)
     const [isOwner, setIsOwner] = useState(false)
+    const [showShareModal, setShowShareModal] = useState(false)
     //Web3 functions
     const {
         runContractFunction: getSafes,
@@ -74,23 +76,69 @@ const Safelock = ({ safelockId, safelockAddress, safelockOwner }) => {
                 <span className="greeting">
                     {isOwner ? <>Hello {firstName},</> : <>{firstName}'s Safelock</>}
                 </span>{" "}
-                <div>
-                    <span
-                        className="safelock-id"
-                        onMouseEnter={() => {
-                            setShowSafelockAddress(true)
-                        }}
-                        onMouseLeave={() => {
-                            setShowSafelockAddress(false)
-                        }}
-                    >
-                        Safelock #{safelockId}<span><Icon icon="cil:share-alt"/></span>
-                    </span>
-                    <div
-                        className={`add-safe-info ${!showSafelockAddress && "hidden"}`}
-                        style={{ width: "auto", position: "absolute", left: "35%" }}
-                    >
-                        Safelock Address is {safelockAddress}
+                <div
+                    style={{
+                        display: "flex",
+                        flexDirection: "row",
+                        justifyContent: "column",
+                        alignItems: "center",
+                    }}
+                >
+                    <div>
+                        <div
+                            style={{
+                                display: "flex",
+                                flexDirection: "row",
+                                justifyContent: "space-between",
+                                alignItems: "center",
+                            }}
+                            className="safelock-id"
+                            onMouseEnter={() => {
+                                setShowSafelockAddress(true)
+                            }}
+                            onMouseLeave={() => {
+                                setShowSafelockAddress(false)
+                            }}
+                        >
+                            <div>Safelock #{safelockId}</div>
+                        </div>
+                        <div
+                            className={`add-safe-info ${!showSafelockAddress && "hidden"}`}
+                            style={{ width: "auto", position: "absolute", left: "35%" }}
+                        >
+                            Safelock Address is {safelockAddress}
+                        </div>
+                    </div>
+                    <div>
+                        <div
+                            style={{
+                                display: "flex",
+                                flexDirection: "row",
+                                justifyContent: "space-between",
+                                alignItems: "center",
+                            }}
+                        >
+                            <div
+                                className="share-button"
+                                onClick={() => {
+                                    setShowShareModal(!showShareModal)
+                                }}
+                            >
+                                <Icon icon="cil:share-alt" />
+                            </div>
+                        </div>
+                        {
+                            <div
+                                style={{  position: "absolute", left: "35%" }}
+                                className={
+                                    showShareModal
+                                        ? "share-modal-container"
+                                        : "share-modal-container hidden"
+                                }
+                            >
+                                <ShareModal />
+                            </div>
+                        }
                     </div>
                 </div>
                 {
