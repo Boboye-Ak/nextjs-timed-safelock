@@ -129,9 +129,9 @@ const Safelock = ({ safelockId, safelockAddress, safelockOwner }) => {
                         </div>
                         {
                             <div
-                                style={{  position: "absolute", left: "35%" }}
+                                style={{ position: "absolute", left: "35%" }}
                                 className={
-                                    showShareModal
+                                    (showShareModal&&!showSafelockAddress)
                                         ? "share-modal-container"
                                         : "share-modal-container hidden"
                                 }
