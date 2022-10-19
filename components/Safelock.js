@@ -58,6 +58,10 @@ const Safelock = ({ safelockId, safelockAddress, safelockOwner }) => {
         setShowNewSafeForm(!showNewSafeForm)
     }
 
+    const toggleShowShareModal = () => {
+        setShowShareModal(!showShareModal)
+    }
+
     useEffect(() => {
         if ((isWeb3Enabled, safelockAddress)) {
             updateUI()
@@ -65,6 +69,7 @@ const Safelock = ({ safelockId, safelockAddress, safelockOwner }) => {
     }, [safelockAddress, isWeb3Enabled, showBroken, account])
     return (
         <div>
+            <ShareModal toggleShowShareModal={toggleShowShareModal} showShareModal={showShareModal} />
             <div
                 style={{
                     display: "flex",
@@ -102,36 +107,6 @@ const Safelock = ({ safelockId, safelockAddress, safelockOwner }) => {
                         >
                             Safelock Address is {safelockAddress}
                         </div>
-                    </div>
-                    <div>
-                        <div
-                            style={{
-                                display: "flex",
-                                flexDirection: "row",
-                                justifyContent: "space-between",
-                                alignItems: "center",
-                            }}
-                        >
-                            <div
-                                className="share-button"
-                                onClick={() => {
-                                    setShowShareModal(!showShareModal)
-                                }}
-                            >
-                                <Icon icon="cil:share-alt" />
-                            </div>
-                        </div>
-                        {
-                            <div
-                                className={
-                                    showShareModal && !showSafelockAddress
-                                        ? "share-modal-container"
-                                        : "share-modal-container hidden"
-                                }
-                            >
-                                <ShareModal />
-                            </div>
-                        }
                     </div>
                 </div>
                 {

@@ -1,0 +1,55 @@
+.share-modal {
+    width: 30vw;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    background-color: #1158f0;
+    position: absolute;
+    z-index: 5;
+    top: 0;
+    left: 0;
+    transition: 0.4s;
+}
+
+.share-modal.hidden {
+    left: -50vw;
+}
+.share-modal .back-button {
+    width: 100%;
+    height: 10vh;
+    padding-right: 20px;
+    font-size: 40px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.share-modal .actual-back-button {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    border: solid;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    font-size: 30px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+.share-modal .actual-back-button:hover {
+    background-color: red;
+}
+
+.share-icon {
+    cursor: pointer;
+    font-size: 20px;
+    transition: 0.2s;
+}
+.share-icon:hover {
+    font-size: 30px;
+}

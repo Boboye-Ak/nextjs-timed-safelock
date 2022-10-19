@@ -208,46 +208,14 @@
     color: white;
 }
 
-.share-button {
-    width: 35px;
-    height: 35px;
-    font-size: 15px;
-    border: solid;
-    border-radius: 50%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-}
-.share-modal-container {
-    position: absolute;
-    margin-top: 5px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 22vw;
-    height: 13vh;
-    padding: 5px;
-    border: solid;
-    border-radius: 20px;
-    background-color: #0a66c2;
-    color: white;
-    transition: 0.4s;
-    z-index: 5;
-    overflow-y: visible;
-}
-.share-modal-container.hidden {
-    font-size: 0;
-    opacity: 0;
-    height: 0;
-    width: 0;
-}
+
+
+
 
 .share-modal {
-    width: 100%;
+    width: 30vw;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
 }
@@ -262,13 +230,10 @@
 
 @media only screen and (max-width: 768px) {
     /* For mobile phones: */
-    .share-modal-container {
-        width: auto;
-        height: 300px;
-    }
-    .share-modal{
+
+    .share-modal {
         height: 100%;
-        flex-direction: column;
+        width: 100%;
     }
     .add-safe-info {
         display: none;
