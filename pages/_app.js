@@ -11,6 +11,7 @@ import "../styles/newsafeform.css"
 import "../styles/safelock-info.css"
 import "../styles/create-safelock.css"
 import "../styles/header.css"
+import "../styles/navbar.css"
 function MyApp({ Component, pageProps }) {
     return (
         <>

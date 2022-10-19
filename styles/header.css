@@ -5,6 +5,7 @@
 
 .search-area {
     height: 50px;
+    display: none;
 }
 
 .search-bar {
@@ -29,7 +30,7 @@
 
 @media only screen and (max-width: 768px) {
     .search-bar {
-        width: 200px;
+        width: 130px;
         height: 40px;
         font-size: 10px;
     }
