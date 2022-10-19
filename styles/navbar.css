@@ -29,7 +29,22 @@
     justify-content: flex-end;
     align-items: center;
     margin-bottom: 10px;
+}
+.navbar .actual-back-button {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    border: solid;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    font-size: 30px;
     cursor: pointer;
+    transition: 0.2s;
+}
+.navbar .actual-back-button:hover {
+    background-color: red;
 }
 .navbar .ul {
     width: 100%;
@@ -51,18 +66,34 @@
     cursor: pointer;
 }
 .navbar input {
+    margin-left: 5px;
     height: 80%;
-    width: 85%;
+    width: 80%;
 }
 .navbar .li:hover {
     background-color: #004bec;
+}
+
+.navbar .li .close-button {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    border: solid;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    transition: 0.2s;
+}
+.navbar .li .close-button:hover {
+    background-color: red;
 }
 
 @media only screen and (max-width: 768px) {
     .navbar {
         width: 90%;
     }
-    .navbar.hidden{
-        left:-100vw;
+    .navbar.hidden {
+        left: -100vw;
     }
 }

@@ -16,7 +16,7 @@ const Header = () => {
     const [showInfo, setShowInfo] = useState(false)
     const [hasResult, setHasResult] = useState(false)
     const [isSearched, setIsSearched] = useState(false)
-    const [showNavBar, setShowNavBar] = useState(true)
+    const [showNavBar, setShowNavBar] = useState(false)
     const [searchInput, setSearchInput] = useState("")
     const [searchResultAddress, setSearchResultAddress] = useState("")
 
@@ -86,9 +86,11 @@ const Header = () => {
                 }}
                 className="header"
             >
-                <div onClick={()=>{
-                    toggleShowNavBar()
-                }}>
+                <div className="menu-button"
+                    onClick={() => {
+                        toggleShowNavBar()
+                    }}
+                >
                     <Icon icon="clarity:menu-line" />
                 </div>
                 <div>

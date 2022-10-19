@@ -11,7 +11,8 @@ const NavBar = ({ toggleShowNavBar, showNavBar }) => {
     const chainId = parseInt(chainIdHex)
     const safelockFactoryAddress =
         chainId in safelockFactoryAddresses ? safelockFactoryAddresses[chainId][0] : null
-    const [searchInput, setSearchInput] = useState()
+    const [searchInput, setSearchInput] = useState("")
+    const [showSearchBar, setShowSearchBar] = useState(false)
     //Web3 Functions
     const { runContractFunction: getSafelockAddressById } = useWeb3Contract({
         abi: safelockFactoryABI,
@@ -36,6 +37,7 @@ const NavBar = ({ toggleShowNavBar, showNavBar }) => {
 
                 if (idFromCall) {
                     router.push(`/safelocks/${searchInput}`)
+                    toggleShowNavBar()
                     return
                 } else {
                     return
@@ -48,6 +50,7 @@ const NavBar = ({ toggleShowNavBar, showNavBar }) => {
                 if (addressFromCall) {
                     console.log("result found")
                     router.push(`/safelocks/${addressFromCall}`)
+                    toggleShowNavBar()
                     return
                 } else {
                     console.log("result not found")
@@ -59,19 +62,22 @@ const NavBar = ({ toggleShowNavBar, showNavBar }) => {
 
     return (
         <div className={showNavBar ? "navbar" : "navbar hidden"}>
-            <div
-                className="back-button"
-                onClick={() => {
-                    toggleShowNavBar()
-                }}
-            >
-                <Icon icon="ant-design:close-circle-twotone" />
+            <div className="back-button">
+                <div
+                    className="actual-back-button"
+                    onClick={() => {
+                        toggleShowNavBar()
+                    }}
+                >
+                    x
+                </div>
             </div>
             <div className="ul">
                 <div
                     className="li"
                     onClick={() => {
                         router.push("/")
+                        toggleShowNavBar()
                     }}
                 >
                     Home
@@ -80,31 +86,58 @@ const NavBar = ({ toggleShowNavBar, showNavBar }) => {
                     className="li"
                     onClick={() => {
                         router.push("/mysafelock")
+                        toggleShowNavBar()
                     }}
                 >
                     My Safelock
                 </div>
                 <div className="li">
-                    <input
-                        placeholder="SAFELOCK ID/ADDRESS"
-                        value={searchInput}
-                        onChange={(e) => {
-                            setSearchInput(e.target.value)
-                        }}
-                    />
+                    {showSearchBar ? (
+                        <>
+                            <div
+                                className="close-button"
+                                onClick={() => {
+                                    setShowSearchBar(false)
+                                }}
+                            >
+                                x
+                            </div>
+                            <input
+                                placeholder="SAFELOCK ID/ADDRESS"
+                                value={searchInput}
+                                onChange={(e) => {
+                                    setSearchInput(e.target.value)
+                                }}
+                                onKeyDown={(event) => {
+                                    if (event.key === "Enter") {
+                                        search()
+                                    }
+                                }}
+                            />
 
-                    <div
-                        onClick={() => {
-                            search()
-                        }}
-                    >
-                        <Icon icon="akar-icons:search" />
-                    </div>
+                            <div
+                                onClick={() => {
+                                    search()
+                                }}
+                            >
+                                <Icon icon="akar-icons:search" />
+                            </div>
+                        </>
+                    ) : (
+                        <div
+                            onClick={() => {
+                                setShowSearchBar(true)
+                            }}
+                        >
+                            Find Safelock
+                        </div>
+                    )}
                 </div>
                 <div
                     className="li"
                     onClick={() => {
                         router.push("/about")
+                        toggleShowNavBar()
                     }}
                 >
                     About Site
