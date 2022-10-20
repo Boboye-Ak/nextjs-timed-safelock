@@ -17,7 +17,7 @@
     "react-dom": "18.2.0",
     "react-icons": "^4.6.0",
     "react-moralis": "^1.4.2",
-    "share-text-to-whatsapp": "^1.0.2",
+    "react-share": "^4.4.1",
     "web3uikit": "^0.1.159"
   },
   "devDependencies": {

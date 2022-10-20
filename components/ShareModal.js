@@ -4,6 +4,28 @@ import { baseURL } from "../constants"
 import { useNotification } from "web3uikit"
 import { useEffect, useState } from "react"
 import QRCode from "qrcode"
+import {
+    EmailShareButton,
+    FacebookShareButton,
+    HatenaShareButton,
+    InstapaperShareButton,
+    LineShareButton,
+    LinkedinShareButton,
+    LivejournalShareButton,
+    MailruShareButton,
+    OKShareButton,
+    PinterestShareButton,
+    PocketShareButton,
+    RedditShareButton,
+    TelegramShareButton,
+    TumblrShareButton,
+    TwitterIcon,
+    TwitterShareButton,
+    ViberShareButton,
+    VKShareButton,
+    WhatsappShareButton,
+    WorkplaceShareButton,
+} from "react-share"
 
 const ShareModal = ({ toggleShowShareModal, showShareModal, safelockId, safelockAddress }) => {
     const router = useRouter()
@@ -21,7 +43,6 @@ const ShareModal = ({ toggleShowShareModal, showShareModal, safelockId, safelock
         })
     }
 
- 
     useEffect(() => {
         generateQRCode()
     }, [])
@@ -70,11 +91,27 @@ const ShareModal = ({ toggleShowShareModal, showShareModal, safelockId, safelock
                     </a>
                 </div>
 
-                <div className="share-method">
-                    <span>Generate QRCode</span>
-                    <span>
-                        <Icon icon="carbon:qr-code" />
-                    </span>
+                <div className="share-method socials">
+                    <div>
+                        <EmailShareButton url={pageUrl}>
+                            <Icon icon="clarity:email-line" />
+                        </EmailShareButton>
+                    </div>
+                    <div>
+                        <FacebookShareButton>
+                            <Icon icon="akar-icons:facebook-fill"/>
+                        </FacebookShareButton>
+                    </div>
+                    <div>
+                        <TwitterShareButton url={pageUrl}>
+                            <Icon icon="akar-icons:twitter-fill" />
+                        </TwitterShareButton>
+                    </div>
+                    <div>
+                        <TelegramShareButton url={pageUrl}>
+                            <Icon icon="akar-icons:telegram-fill" />
+                        </TelegramShareButton>
+                    </div>
                 </div>
             </div>
         </div>
