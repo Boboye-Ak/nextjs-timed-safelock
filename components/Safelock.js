@@ -69,7 +69,10 @@ const Safelock = ({ safelockId, safelockAddress, safelockOwner }) => {
     }, [safelockAddress, isWeb3Enabled, showBroken, account])
     return (
         <div>
-            <ShareModal toggleShowShareModal={toggleShowShareModal} showShareModal={showShareModal} />
+            <ShareModal
+                toggleShowShareModal={toggleShowShareModal}
+                showShareModal={showShareModal}
+            />
             <div
                 style={{
                     display: "flex",
@@ -187,6 +190,13 @@ const Safelock = ({ safelockId, safelockAddress, safelockOwner }) => {
                     }}
                 />
             )}
+            <div className="share-bar">
+                <div className="share-icon" onClick={()=>{
+                    toggleShowShareModal()
+                }}>
+                    <Icon icon="bi:share" />
+                </div>
+            </div>
         </div>
     )
 }
