@@ -49,4 +49,7 @@
         height: 40px;
         font-size: 10px;
     }
+    .header{
+        padding-right: 0;
+    }
 }

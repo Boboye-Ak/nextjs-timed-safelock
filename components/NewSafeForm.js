@@ -130,7 +130,7 @@ const NewSafeForm = ({ safelockAddress, updateUI, toggleNewSafeForm }) => {
                     >
                         <input
                             className="amount-input"
-                            style={{ height: "100%" }}
+                            
                             type="number"
                             placeholder="AMOUNT"
                             value={amount}

@@ -86,7 +86,8 @@ const Header = () => {
                 }}
                 className="header"
             >
-                <div className="menu-button"
+                <div
+                    className="menu-button"
                     onClick={() => {
                         toggleShowNavBar()
                     }}
@@ -96,65 +97,7 @@ const Header = () => {
                 <div>
                     <ConnectButton moralisAuth={false} />
                 </div>
-                <div className="search-area">
-                    <div
-                        className="search-bar"
-                        onMouseEnter={() => {
-                            setShowInfo(true)
-                        }}
-                        onMouseLeave={() => {
-                            setShowInfo(false)
-                        }}
-                    >
-                        <input
-                            type="text"
-                            placeholder="Safelock Address or ID"
-                            value={searchInput}
-                            onChange={(e) => {
-                                setSearchInput(e.target.value)
-                            }}
-                            onBlur={() => {
-                                if (!searchInput) {
-                                    setHasResult(false)
-                                    setIsSearched(false)
-                                }
-                            }}
-                        />
-                        <span
-                            style={{ cursor: "pointer" }}
-                            onClick={() => {
-                                search()
-                            }}
-                        >
-                            <Icon icon="bi:search" />
-                        </span>
-                    </div>
-                    {!hasResult && !isSearched && (
-                        <div
-                            className={`add-safe-info pc-only ${
-                                (!showInfo || isSearched || hasResult) && "hidden"
-                            }`}
-                        >
-                            Enter ID or Address of safelock you are looking for
-                        </div>
-                    )}
-                    <div
-                        className={`search-result ${(!isSearched || !hasResult) && "hidden"}`}
-                        style={{
-                            cursor: "pointer",
-                        }}
-                        onClick={() => {
-                            router.push(`/safelocks/${searchResultAddress}`)
-                        }}
-                    >
-                        {searchResultAddress}
-                    </div>
-                    {
-                        <div className={`search-result ${(!isSearched || hasResult) && "hidden"}`}>
-                            No Safelock with that Address/ID
-                        </div>
-                    }
-                </div>
+                
             </div>
             <NavBar toggleShowNavBar={toggleShowNavBar} showNavBar={showNavBar} />
         </>

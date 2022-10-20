@@ -72,6 +72,8 @@ const Safelock = ({ safelockId, safelockAddress, safelockOwner }) => {
             <ShareModal
                 toggleShowShareModal={toggleShowShareModal}
                 showShareModal={showShareModal}
+                safelockAddress={safelockAddress}
+                safelockId={safelockId}
             />
             <div
                 style={{
@@ -191,9 +193,12 @@ const Safelock = ({ safelockId, safelockAddress, safelockOwner }) => {
                 />
             )}
             <div className="share-bar">
-                <div className="share-icon" onClick={()=>{
-                    toggleShowShareModal()
-                }}>
+                <div
+                    className="share-icon"
+                    onClick={() => {
+                        toggleShowShareModal()
+                    }}
+                >
                     <Icon icon="bi:share" />
                 </div>
             </div>

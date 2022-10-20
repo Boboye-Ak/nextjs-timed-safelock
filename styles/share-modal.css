@@ -75,6 +75,28 @@
     align-items: center;
 }
 
+.share-methods {
+    height: 80%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+}
+.share-method {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    font-size: 25px;
+    width: 100%;
+    height: 70px;
+    cursor: pointer;
+}
+
+.share-method:hover {
+    background-color: #004bec;
+}
 @media only screen and (max-width: 768px) {
     .share-modal {
         width: 90%;

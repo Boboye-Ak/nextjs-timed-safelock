@@ -35,4 +35,7 @@
     .safe-index {
         display: none;
     }
+    .no-safes {
+        font-size: 12px;
+    }
 }

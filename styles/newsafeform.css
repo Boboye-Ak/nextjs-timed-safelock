@@ -44,6 +44,7 @@
 
 .amount-input {
     font-size: 20px;
+    height: 100%;
 }
 .beneficiary-input-div input {
     width: 30vw;
@@ -53,8 +54,8 @@
 
 @media only screen and (max-width: 768px) {
     /* For mobile phones: */
-    .new-safe-form{
-        height: 180px;
+    .new-safe-form {
+        height: 260px;
     }
     .new-safe-form-row {
         height: auto;
@@ -63,16 +64,19 @@
         align-items: center;
     }
     .time-input {
-        width: 60px;
+        margin-left: 1px;
+        margin-right: 1px;
+        width: 50px;
         height: 30px;
         font-size: 20px;
     }
     .amount-input {
         width: 150px;
+        height: 30px;
         margin-bottom: 10px;
         font-size: 20px;
     }
-    .beneficiary-input-div input{
+    .beneficiary-input-div input {
         width: 200px;
     }
 }

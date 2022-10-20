@@ -12,10 +12,12 @@
     "ethers": "^5.7.1",
     "moralis": "^2.6.4",
     "next": "12.3.1",
+    "qrcode": "^1.5.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-icons": "^4.6.0",
     "react-moralis": "^1.4.2",
+    "share-text-to-whatsapp": "^1.0.2",
     "web3uikit": "^0.1.159"
   },
   "devDependencies": {

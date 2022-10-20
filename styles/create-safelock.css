@@ -16,13 +16,19 @@
     margin-top: 5px;
 }
 
+.create-safelock-button:disabled{
+    cursor: not-allowed;
+    background: rgba(0, 0, 0, 0.08);
+    color: rgba(0, 0, 0, 0.3);
+}
+
 .create-safelock-form {
     width: 50vw;
 }
 
 @media only screen and (max-width: 768px) {
     /* For mobile phones: */
-    .create-safelock-form{
+    .create-safelock-form {
         width: 75vw;
     }
 }
