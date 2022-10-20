@@ -13,11 +13,16 @@ const YouDontHaveASafelock = () => {
                 height: "90vh",
             }}
         >
-            <div>You Don't Have A Safelock. Please Create One</div>
+            <div className="no-safelock-text">You Don't Have A Safelock. Please Create One</div>
 
-            <button class="glow-on-hover" onClick={()=>{
-                router.push("/createsafelock")
-            }}>CREATE SAFELOCK</button>
+            <button
+                className="glow-on-hover"
+                onClick={() => {
+                    router.push("/createsafelock")
+                }}
+            >
+                CREATE SAFELOCK
+            </button>
         </div>
     )
 }

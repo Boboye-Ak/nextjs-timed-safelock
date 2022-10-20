@@ -46,28 +46,31 @@ const CreateSafelock = ({ updateUI }) => {
                 alignItems: "center",
                 height: "90vh",
             }}
+            
         >
-            <input
-                className="name-input-bar"
-                type="text"
-                placeholder="YOUR FIRST NAME"
-                value={firstName}
-                onChange={(e) => {
-                    setFirstName(e.target.value)
-                }}
-            />
-            <button
-                className="create-safelock-button glow-on-hover"
-                onClick={handleCreate}
-                disabled={
-                    !firstName ||
-                    createSafelockIsFetching ||
-                    createSafelockIsLoading ||
-                    isAwaitingConfirmation
-                }
-            >
-                CREATE SAFELOCK
-            </button>
+            <div className="create-safelock-form">
+                <input
+                    className="name-input-bar"
+                    type="text"
+                    placeholder="YOUR FIRST NAME"
+                    value={firstName}
+                    onChange={(e) => {
+                        setFirstName(e.target.value)
+                    }}
+                />
+                <button
+                    className="create-safelock-button glow-on-hover"
+                    onClick={handleCreate}
+                    disabled={
+                        !firstName ||
+                        createSafelockIsFetching ||
+                        createSafelockIsLoading ||
+                        isAwaitingConfirmation
+                    }
+                >
+                    CREATE SAFELOCK
+                </button>
+            </div>
         </div>
     )
 }

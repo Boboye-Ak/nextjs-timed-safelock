@@ -74,3 +74,12 @@
     justify-content: flex-end;
     align-items: center;
 }
+
+@media only screen and (max-width: 768px) {
+    .share-modal {
+        width: 90%;
+    }
+    .share-modal.hidden {
+        left: -100vw;
+    }
+}

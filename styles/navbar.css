@@ -37,9 +37,9 @@
     align-items: center;
     border: solid;
     border-radius: 50%;
-    width: 40px;
-    height: 40px;
-    font-size: 30px;
+    width: 35px;
+    height: 35px;
+    font-size: 25px;
     cursor: pointer;
     transition: 0.2s;
 }

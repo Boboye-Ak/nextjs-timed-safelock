@@ -8,7 +8,7 @@ const ShareModal = ({ toggleShowShareModal, showShareModal }) => {
     const pageUrl = baseURL + router.asPath
     const dispatch = useNotification()
     return (
-        <div className={showShareModal?"share-modal":"share-modal hidden"}>
+        <div className={showShareModal ? "share-modal" : "share-modal hidden"}>
             <div className="back-button">
                 <div
                     className="actual-back-button"
