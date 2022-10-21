@@ -122,7 +122,17 @@ const Safelock = ({ safelockId, safelockAddress, safelockOwner }) => {
                                     x
                                 </span>
                             </div>
-                            <div className="main">Safelock Address: {safelockAddress}</div>
+                            <div className="main">
+                                Safelock Address: {safelockAddress}{" "}
+                                <div
+                                    className="copy-icon"
+                                    onClick={() => {
+                                        navigator.clipboard.writeText(safelockAddress)
+                                    }}
+                                >
+                                    <Icon icon="clarity:copy-to-clipboard-line" />
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

@@ -4,6 +4,8 @@ import { baseURL } from "../constants"
 import { useNotification } from "web3uikit"
 import { useEffect, useState } from "react"
 import QRCode from "qrcode"
+import { useMoralis } from "react-moralis"
+import { safelockFactoryAddresses, chains } from "../constants"
 import {
     EmailShareButton,
     FacebookShareButton,
@@ -28,6 +30,16 @@ import {
 } from "react-share"
 
 const ShareModal = ({ toggleShowShareModal, showShareModal, safelockId, safelockAddress }) => {
+    const { chainId: chainIdHex, isWeb3Enabled, account } = useMoralis()
+    const chainId = parseInt(chainIdHex)
+    const safelockFactoryAddress =
+        chainId in safelockFactoryAddresses ? safelockFactoryAddresses[chainId][0] : null
+    let activeChain = chains.filter((chain) => {
+        if (chain.chainId == chainId) {
+            return chain
+        }
+    })
+    activeChain = activeChain[0]
     const router = useRouter()
     const pageUrl = baseURL + router.asPath
     const whatsappShareText = `Check out my Safelock with address ${safelockAddress} at ${pageUrl}`
@@ -90,6 +102,17 @@ const ShareModal = ({ toggleShowShareModal, showShareModal, safelockId, safelock
                         </span>
                     </a>
                 </div>
+                <div className="share-method">
+                    <a
+                        href={`${activeChain.blockExplorerUrl}/address/${safelockAddress}`}
+                        target="_blank"
+                    >
+                        <span>{activeChain.blockExplorerName}</span>
+                        <span>
+                            <Icon icon="openmoji:polar-explorer" />
+                        </span>
+                    </a>
+                </div>
 
                 <div className="share-method socials">
                     <div>
@@ -99,7 +122,7 @@ const ShareModal = ({ toggleShowShareModal, showShareModal, safelockId, safelock
                     </div>
                     <div>
                         <FacebookShareButton>
-                            <Icon icon="akar-icons:facebook-fill"/>
+                            <Icon icon="akar-icons:facebook-fill" />
                         </FacebookShareButton>
                     </div>
                     <div>
