@@ -2,8 +2,9 @@ import { Icon } from "@iconify/react"
 import { useRouter } from "next/router"
 import { useState } from "react"
 import { useWeb3Contract, useMoralis } from "react-moralis"
-import { safelockFactoryABI, safelockFactoryAddresses } from "../constants"
+import { safelockFactoryABI, safelockFactoryAddresses, chains } from "../constants"
 import { ethers } from "ethers"
+
 
 const NavBar = ({ toggleShowNavBar, showNavBar }) => {
     const router = useRouter()
@@ -11,6 +12,12 @@ const NavBar = ({ toggleShowNavBar, showNavBar }) => {
     const chainId = parseInt(chainIdHex)
     const safelockFactoryAddress =
         chainId in safelockFactoryAddresses ? safelockFactoryAddresses[chainId][0] : null
+
+    let activeChain = chains.filter((chain) => {
+        if (chain.chainId == chainId) {
+            return chain
+        }
+    })
     const [searchInput, setSearchInput] = useState("")
     const [showSearchBar, setShowSearchBar] = useState(false)
     //Web3 Functions

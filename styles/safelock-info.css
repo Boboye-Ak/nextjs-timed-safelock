@@ -16,6 +16,52 @@
     cursor: pointer;
 }
 
+.safelock-address-modal {
+    position: absolute;
+    left: 40vw;
+    width: 30vw;
+    height: 100px;
+    border-radius: 12px;
+    background-color: #0a66c2;
+    transition: 0.4s;
+}
+.safelock-address-modal.hidden {
+    opacity: 0;
+    width: 0;
+    height: 0;
+    font-size: 0;
+}
+.safelock-address-modal .close-bar {
+    height: 35%;
+    padding-right: 5px;
+    padding-top: 5px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.safelock-address-modal .close-bar span {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    border: solid;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    transition: 0.2s;
+    cursor: pointer;
+}
+.safelock-address-modal .close-bar span:hover {
+    background-color: red;
+}
+.safelock-address-modal .main {
+    height: 65%;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
 @media only screen and (max-width: 768px) {
     /* For mobile phones: */
     .greeting {

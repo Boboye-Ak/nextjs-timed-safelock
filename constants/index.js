@@ -16,4 +16,5 @@ module.exports = {
     safelockFactoryAddresses,
     baseURL,
     supportedChains,
+    chains
 }

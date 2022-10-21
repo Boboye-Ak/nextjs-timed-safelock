@@ -102,20 +102,27 @@ const Safelock = ({ safelockId, safelockAddress, safelockOwner }) => {
                     <div>
                         <div
                             className="safelock-id pc-only"
-                            onMouseEnter={() => {
-                                setShowSafelockAddress(true)
-                            }}
-                            onMouseLeave={() => {
-                                setShowSafelockAddress(false)
+                            onClick={() => {
+                                setShowSafelockAddress(!showSafelockAddress)
                             }}
                         >
                             <div>Safelock #{safelockId}</div>
                         </div>
                         <div
-                            className={`add-safe-info pc-only ${!showSafelockAddress && "hidden"}`}
-                            style={{ width: "auto", position: "absolute", left: "35%" }}
+                            className={`safelock-address-modal pc-only ${
+                                !showSafelockAddress && "hidden"
+                            }`}
                         >
-                            Safelock Address is {safelockAddress}
+                            <div className="close-bar">
+                                <span
+                                    onClick={() => {
+                                        setShowSafelockAddress(!showSafelockAddress)
+                                    }}
+                                >
+                                    x
+                                </span>
+                            </div>
+                            <div className="main">Safelock Address: {safelockAddress}</div>
                         </div>
                     </div>
                 </div>
@@ -143,7 +150,7 @@ const Safelock = ({ safelockId, safelockAddress, safelockOwner }) => {
 
             {safes?.length <= 0 && <NoSafes />}
             {showBroken
-                ? safes.map((safe, index) => {
+                ? safes?.map((safe, index) => {
                       return (
                           <Safe
                               key={index}
@@ -162,7 +169,7 @@ const Safelock = ({ safelockId, safelockAddress, safelockOwner }) => {
                           />
                       )
                   })
-                : safes.map((safe, index) => {
+                : safes?.map((safe, index) => {
                       if (!safe.isBroken) {
                           return (
                               <Safe
