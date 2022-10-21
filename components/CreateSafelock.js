@@ -2,6 +2,7 @@ import { safelockFactoryAddresses, safelockFactoryABI, safelockABI } from "../co
 import { useMoralis, useWeb3Contract } from "react-moralis"
 import { useRouter } from "next/router"
 import { useState } from "react"
+import Loader from "./Loader"
 
 const CreateSafelock = ({ updateUI }) => {
     const router = useRouter()
@@ -11,6 +12,7 @@ const CreateSafelock = ({ updateUI }) => {
         chainId in safelockFactoryAddresses ? safelockFactoryAddresses[chainId][0] : null
     const [firstName, setFirstName] = useState("")
     const [isAwaitingConfirmation, setIsAwaitingConfirmation] = useState(false)
+    const [isLoading, setIsLoading] = useState(false)
 
     //Web3 Functions
     const {
@@ -29,6 +31,7 @@ const CreateSafelock = ({ updateUI }) => {
         console.log({ firstName, safelockFactoryABI, safelockFactoryAddress })
         await createSafelock({
             onSuccess: async (tx) => {
+                setIsLoading(true)
                 setIsAwaitingConfirmation(true)
                 await tx.wait(1)
                 setIsAwaitingConfirmation(false)
@@ -46,8 +49,8 @@ const CreateSafelock = ({ updateUI }) => {
                 alignItems: "center",
                 height: "90vh",
             }}
-            
         >
+            {isLoading && <Loader />}
             <div className="create-safelock-form">
                 <input
                     className="name-input-bar"

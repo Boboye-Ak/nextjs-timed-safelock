@@ -10,6 +10,7 @@ const PleaseConnectWallet = () => {
                 alignItems: "center",
                 height: "90vh",
             }}
+            className="connect-wallet"
         >
             <div>Please Connect Your Wallet</div>
             <ConnectButton moralisAuth={false} />

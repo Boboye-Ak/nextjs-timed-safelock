@@ -4,6 +4,7 @@ import { useMoralis, useWeb3Contract } from "react-moralis"
 import { safelockFactoryAddresses, safelockFactoryABI, safelockABI } from "../constants"
 import AddSafe from "./AddSafe"
 import CountdownTimer from "./CountdownTimer"
+import Loader from "./Loader"
 import NewSafeForm from "./NewSafeForm"
 import NoSafes from "./NoSafes"
 import Safe from "./Safe"
@@ -23,6 +24,7 @@ const Safelock = ({ safelockId, safelockAddress, safelockOwner }) => {
     const [showSafelockAddress, setShowSafelockAddress] = useState(false)
     const [isOwner, setIsOwner] = useState(false)
     const [showShareModal, setShowShareModal] = useState(false)
+    const [isLoading, setIsLoading] = useState(false)
     //Web3 functions
     const {
         runContractFunction: getSafes,
@@ -64,11 +66,14 @@ const Safelock = ({ safelockId, safelockAddress, safelockOwner }) => {
 
     useEffect(() => {
         if ((isWeb3Enabled, safelockAddress)) {
+            setIsLoading(true)
             updateUI()
+            setIsLoading(false)
         }
     }, [safelockAddress, isWeb3Enabled, showBroken, account])
     return (
         <div>
+            {isLoading && <Loader />}
             <ShareModal
                 toggleShowShareModal={toggleShowShareModal}
                 showShareModal={showShareModal}
@@ -121,7 +126,7 @@ const Safelock = ({ safelockId, safelockAddress, safelockOwner }) => {
                             flexDirection: "row",
                             alignItems: "center",
                             justifyContent: "center",
-                            opacity: safes.length > 0 ? "1" : "0",
+                            opacity: safes?.length > 0 ? "1" : "0",
                         }}
                     >
                         OPENED SAFES

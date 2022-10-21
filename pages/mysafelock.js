@@ -6,6 +6,8 @@ import Header from "../components/Header"
 import styles from "../styles/Home.module.css"
 import PleaseConnectWallet from "../components/PleaseConnectWallet"
 import Safelock from "../components/Safelock"
+import Loader from "../components/Loader"
+import SwitchToSupportedChain from "../components/SwitchToSupportedChain"
 
 const MySafelock = () => {
     const { chainId: chainIdHex, isWeb3Enabled, account } = useMoralis()
@@ -15,6 +17,7 @@ const MySafelock = () => {
 
     const [mySafelockId, setMySafelockId] = useState(0)
     const [mySafelockAddress, setMySafelockAddress] = useState("")
+    const [isLoading, setIsLoading] = useState(false)
     //Web3 Functions
     const {
         runContractFunction: getMySafelockId,
@@ -39,6 +42,7 @@ const MySafelock = () => {
 
     //Web2 Functions
     const setAddressandId = async () => {
+        setIsLoading(true)
         let mySafelockIdFromCall = await getMySafelockId()
         mySafelockIdFromCall = mySafelockIdFromCall?.toString()
         mySafelockIdFromCall = parseInt(mySafelockIdFromCall)
@@ -46,6 +50,7 @@ const MySafelock = () => {
         let mySafelockAddressFromCall = await getMySafelockAddress()
         mySafelockAddressFromCall = mySafelockAddressFromCall?.toString()
         setMySafelockAddress(mySafelockAddressFromCall)
+        setIsLoading(false)
     }
 
     //UseEffects
@@ -58,9 +63,15 @@ const MySafelock = () => {
     return (
         <div className={styles.container}>
             <Header />
+            {!safelockFactoryAddress && account && <SwitchToSupportedChain />}
+            {isLoading && <Loader />}
             {account ? (
                 mySafelockId && mySafelockAddress ? (
-                    <Safelock safelockId={mySafelockId} safelockAddress={mySafelockAddress} safelockOwner={account} />
+                    <Safelock
+                        safelockId={mySafelockId}
+                        safelockAddress={mySafelockAddress}
+                        safelockOwner={account}
+                    />
                 ) : (
                     <YouDontHaveASafelock />
                 )

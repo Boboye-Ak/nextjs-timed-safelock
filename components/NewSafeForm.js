@@ -5,6 +5,7 @@ import { safelockFactoryAddresses, safelockFactoryABI, safelockABI } from "../co
 import { convertToWei } from "../utils/converter"
 import Switch from "./Switch"
 import { ethers } from "ethers"
+import Loader from "./Loader"
 
 const NewSafeForm = ({ safelockAddress, updateUI, toggleNewSafeForm }) => {
     const { chainId: chainIdHex, isWeb3Enabled, account } = useMoralis()
@@ -21,6 +22,7 @@ const NewSafeForm = ({ safelockAddress, updateUI, toggleNewSafeForm }) => {
     const [amountInWei, setAmountInWei] = useState(0)
     const [isAwaitingConfirmation, setIsAwaitingConfirmation] = useState(false)
     const [showBeneficiary, setShowBeneficiary] = useState(false)
+    const [isLoading, setIsLoading] = useState(false)
 
     //Web3 functions
     const {
@@ -70,9 +72,11 @@ const NewSafeForm = ({ safelockAddress, updateUI, toggleNewSafeForm }) => {
         console.log("creating safe...")
         await createSafe({
             onSuccess: async (tx) => {
+                setIsLoading(true)
                 setIsAwaitingConfirmation(true)
                 await tx.wait(1)
                 setIsAwaitingConfirmation(false)
+                setIsLoading(false)
                 updateUI()
                 resetParams()
                 toggleNewSafeForm()
@@ -95,6 +99,7 @@ const NewSafeForm = ({ safelockAddress, updateUI, toggleNewSafeForm }) => {
                 justifyContent: "flex-start",
             }}
         >
+            {isLoading && <Loader />}
             <div
                 style={{
                     width: "100%",
@@ -130,7 +135,6 @@ const NewSafeForm = ({ safelockAddress, updateUI, toggleNewSafeForm }) => {
                     >
                         <input
                             className="amount-input"
-                            
                             type="number"
                             placeholder="AMOUNT"
                             value={amount}

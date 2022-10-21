@@ -9,6 +9,8 @@ import { safelockFactoryAddresses, safelockFactoryABI, safelockABI } from "../co
 import PleaseConnectWallet from "../components/PleaseConnectWallet"
 import { useEffect, useState } from "react"
 import YouDontHaveASafelock from "../components/YouDontHaveASafelock"
+import Loader from "../components/Loader"
+import SwitchToSupportedChain from "../components/SwitchToSupportedChain"
 
 export default function Home() {
     const { chainId: chainIdHex, isWeb3Enabled, account } = useMoralis()
@@ -47,6 +49,7 @@ export default function Home() {
     return (
         <div className={styles.container}>
             <Header />
+            {!safelockFactoryAddress&&account && <SwitchToSupportedChain />}
             {account ? (
                 mySafelockId ? (
                     <GoToSafelock />
