@@ -95,7 +95,7 @@ const ShareModal = ({ toggleShowShareModal, showShareModal, safelockId, safelock
                 </div>
 
                 <div className="share-method">
-                    <a href={`whatsapp://send?text=${whatsappShareText}`} target="_blank">
+                    <a href={`whatsapp://send?text=${whatsappShareText}`} target="_blank" rel="noreferrer">
                         <span>Whatsapp</span>
                         <span>
                             <Icon icon="akar-icons:whatsapp-fill" />
@@ -106,6 +106,7 @@ const ShareModal = ({ toggleShowShareModal, showShareModal, safelockId, safelock
                     <a
                         href={`${activeChain.blockExplorerUrl}/address/${safelockAddress}`}
                         target="_blank"
+                        rel="noreferrer"
                     >
                         <span>{activeChain.blockExplorerName}</span>
                         <span>

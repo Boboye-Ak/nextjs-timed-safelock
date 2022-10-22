@@ -89,7 +89,7 @@ const Safelock = ({ safelockId, safelockAddress, safelockOwner }) => {
                 }}
             >
                 <span className="greeting">
-                    {isOwner ? <>Hello {firstName},</> : <>{firstName}'s Safelock</>}
+                    {isOwner ? <>Hello {firstName},</> : <>{firstName}&apos;s Safelock</>}
                 </span>{" "}
                 <div
                     style={{
@@ -173,7 +173,7 @@ const Safelock = ({ safelockId, safelockAddress, safelockOwner }) => {
                         isBroken={safe.isBroken}
                         beneficiary={safe.beneficiary?.toString()?.toLowerCase()}
                         isOwner={isOwner}
-                        isHidden={!showBroken&&safe.isBroken}
+                        isHidden={!showBroken && safe.isBroken}
                         safelockOwner={safelockOwner}
                         updateUI={updateUI}
                     />

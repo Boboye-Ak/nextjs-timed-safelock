@@ -7,7 +7,7 @@ import Safelock from "../../components/Safelock"
 import styles from "../../styles/Home.module.css"
 import Loader from "../../components/Loader"
 
-const safelockPage = ({}) => {
+const SafelockPage = ({}) => {
     const router = useRouter()
     const { chainId: chainIdHex, isWeb3Enabled, account } = useMoralis()
     const safelockAddress = router.query.address ? router.query.address : null
@@ -70,7 +70,7 @@ const safelockPage = ({}) => {
     return (
         <div className={styles.container}>
             <Header />
-            {isLoading&&<Loader/>}
+            {isLoading && <Loader />}
             {id && safelockOwner ? (
                 <>
                     <Safelock
@@ -86,4 +86,4 @@ const safelockPage = ({}) => {
     )
 }
 
-export default safelockPage
+export default SafelockPage
