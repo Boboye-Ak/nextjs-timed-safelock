@@ -45,7 +45,7 @@ const WithdrawButton = ({
                     withdrawIsLoading ||
                     isAwaitingConfirmation ||
                     isBroken ||
-                    (!isOwner && account?.toLowerCase() != beneficiary)
+                    !(isOwner || account?.toLowerCase() == beneficiary?.toLowerCase())
                 }
             >
                 WITHDRAW

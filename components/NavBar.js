@@ -5,7 +5,6 @@ import { useWeb3Contract, useMoralis } from "react-moralis"
 import { safelockFactoryABI, safelockFactoryAddresses, chains } from "../constants"
 import { ethers } from "ethers"
 
-
 const NavBar = ({ toggleShowNavBar, showNavBar }) => {
     const router = useRouter()
     const { chainId: chainIdHex, isWeb3Enabled, account } = useMoralis()
@@ -18,6 +17,7 @@ const NavBar = ({ toggleShowNavBar, showNavBar }) => {
             return chain
         }
     })
+    activeChain = activeChain[0]
     const [searchInput, setSearchInput] = useState("")
     const [showSearchBar, setShowSearchBar] = useState(false)
     //Web3 Functions

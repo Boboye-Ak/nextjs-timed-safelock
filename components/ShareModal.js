@@ -75,6 +75,7 @@ const ShareModal = ({ toggleShowShareModal, showShareModal, safelockId, safelock
                     className="share-method"
                     onClick={() => {
                         navigator.clipboard.writeText(pageUrl)
+
                     }}
                 >
                     <span>Copy To Clipboard</span>

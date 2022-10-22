@@ -70,7 +70,7 @@ const Safelock = ({ safelockId, safelockAddress, safelockOwner }) => {
             updateUI()
             setIsLoading(false)
         }
-    }, [safelockAddress, isWeb3Enabled, showBroken, account])
+    }, [safelockAddress, isWeb3Enabled, showBroken, account, chainId])
     return (
         <div>
             {isLoading && <Loader />}
@@ -159,47 +159,26 @@ const Safelock = ({ safelockId, safelockAddress, safelockOwner }) => {
             </div>
 
             {safes?.length <= 0 && <NoSafes />}
-            {showBroken
-                ? safes?.map((safe, index) => {
-                      return (
-                          <Safe
-                              key={index}
-                              safeIndex={index}
-                              safelockAddress={safelockAddress}
-                              safeAmount={parseInt(safe.amount?.toString())}
-                              endTime={
-                                  parseInt(safe.createdTime?.toString()) +
-                                  parseInt(safe.timeLength?.toString())
-                              }
-                              isBroken={safe.isBroken}
-                              beneficiary={safe.beneficiary?.toString()}
-                              isOwner={isOwner}
-                              safelockOwner={safelockOwner}
-                              updateUI={updateUI}
-                          />
-                      )
-                  })
-                : safes?.map((safe, index) => {
-                      if (!safe.isBroken) {
-                          return (
-                              <Safe
-                                  key={index}
-                                  safeIndex={index}
-                                  safelockAddress={safelockAddress}
-                                  safeAmount={parseInt(safe.amount?.toString())}
-                                  endTime={
-                                      parseInt(safe.createdTime?.toString()) +
-                                      parseInt(safe.timeLength?.toString())
-                                  }
-                                  isBroken={safe.isBroken}
-                                  beneficiary={safe.beneficiary?.toString()}
-                                  isOwner={isOwner}
-                                  safelockOwner={safelockOwner}
-                                  updateUI={updateUI}
-                              />
-                          )
-                      }
-                  })}
+            {safes?.map((safe, index) => {
+                return (
+                    <Safe
+                        key={index}
+                        safeIndex={index}
+                        safelockAddress={safelockAddress}
+                        safeAmount={parseInt(safe.amount?.toString())}
+                        endTime={
+                            parseInt(safe.createdTime?.toString()) +
+                            parseInt(safe.timeLength?.toString())
+                        }
+                        isBroken={safe.isBroken}
+                        beneficiary={safe.beneficiary?.toString()?.toLowerCase()}
+                        isOwner={isOwner}
+                        isHidden={!showBroken&&safe.isBroken}
+                        safelockOwner={safelockOwner}
+                        updateUI={updateUI}
+                    />
+                )
+            })}
             {showNewSafeForm && isOwner && (
                 <NewSafeForm
                     safelockAddress={safelockAddress}

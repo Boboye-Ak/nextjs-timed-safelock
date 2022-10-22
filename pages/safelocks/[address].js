@@ -5,6 +5,7 @@ import { useEffect, useState } from "react"
 import { safelockFactoryAddresses, safelockFactoryABI, safelockABI } from "../../constants"
 import Safelock from "../../components/Safelock"
 import styles from "../../styles/Home.module.css"
+import Loader from "../../components/Loader"
 
 const safelockPage = ({}) => {
     const router = useRouter()
@@ -15,6 +16,7 @@ const safelockPage = ({}) => {
         chainId in safelockFactoryAddresses ? safelockFactoryAddresses[chainId][0] : null
     const [id, setId] = useState(0)
     const [safelockOwner, setSafelockOwner] = useState("")
+    const [isLoading, setIsLoading] = useState(false)
 
     //Web3 Functions
     const { runContractFunction: getSafelockIdByAddress } = useWeb3Contract({
@@ -34,19 +36,23 @@ const safelockPage = ({}) => {
     //Web2 Functions
 
     const updateUI = async () => {
+        setIsLoading(true)
         let idFromCall = await getSafelockIdByAddress()
         idFromCall = parseInt(idFromCall?.toString())
         if (!isNaN(idFromCall) && idFromCall > 0) {
             setId(idFromCall)
+            setIsLoading(false)
         } else {
             router.push("/")
         }
     }
 
     const updateUI2 = async () => {
+        setIsLoading(true)
         let safelockOwnerFromCall = await getSafelockOwner()
         safelockOwnerFromCall = safelockOwnerFromCall?.toString()
         setSafelockOwner(safelockOwnerFromCall)
+        setIsLoading(false)
     }
 
     //Use Effects
@@ -64,6 +70,7 @@ const safelockPage = ({}) => {
     return (
         <div className={styles.container}>
             <Header />
+            {isLoading&&<Loader/>}
             {id && safelockOwner ? (
                 <>
                     <Safelock

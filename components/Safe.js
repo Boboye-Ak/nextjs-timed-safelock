@@ -13,10 +13,11 @@ const Safe = ({
     beneficiary,
     isOwner,
     updateUI,
+    isHidden,
 }) => {
     return (
         <div
-            className="safe"
+            className={isHidden?("safe hidden"):("safe")}
             style={{
                 border: "solid",
                 borderWidth: "thin",
@@ -26,12 +27,7 @@ const Safe = ({
                 alignItems: "center",
             }}
         >
-            <div
-                className="safe-index pc-only"
-
-            >
-                Safe #{safeIndex + 1}
-            </div>
+            <div className="safe-index pc-only">Safe #{safeIndex + 1}</div>
             <div
                 style={{
                     display: "flex",
