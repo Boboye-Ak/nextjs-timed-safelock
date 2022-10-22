@@ -41,7 +41,7 @@ const CreateSafelockPage = () => {
         if (isWeb3Enabled) {
             updateUI()
         }
-    }, [isWeb3Enabled, account])
+    }, [isWeb3Enabled, account, chainId])
     return (
         <div className={styles.container}>
             <Header />

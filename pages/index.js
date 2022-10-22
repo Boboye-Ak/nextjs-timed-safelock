@@ -45,11 +45,11 @@ export default function Home() {
         if (isWeb3Enabled) {
             updateUI()
         }
-    }, [isWeb3Enabled, account])
+    }, [isWeb3Enabled, account, chainId])
     return (
         <div className={styles.container}>
             <Header />
-            {!safelockFactoryAddress&&account && <SwitchToSupportedChain />}
+            {!safelockFactoryAddress && account && <SwitchToSupportedChain />}
             {account ? (
                 mySafelockId ? (
                     <GoToSafelock />

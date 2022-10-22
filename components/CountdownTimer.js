@@ -10,10 +10,10 @@ const CountdownTimer = ({
     beneficiary,
     updateUI,
 }) => {
-    const [timerDays, setTimerDays] = useState(88)
-    const [timerHours, setTimerHours] = useState(88)
-    const [timerMinutes, setTimerMinutes] = useState(88)
-    const [timerSeconds, setTimerSeconds] = useState(88)
+    const [timerDays, setTimerDays] = useState(0)
+    const [timerHours, setTimerHours] = useState(0)
+    const [timerMinutes, setTimerMinutes] = useState(0)
+    const [timerSeconds, setTimerSeconds] = useState(0)
     const [isTimeUp, setIsTimeUp] = useState(false)
 
     let interval

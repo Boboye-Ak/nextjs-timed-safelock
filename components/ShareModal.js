@@ -75,7 +75,6 @@ const ShareModal = ({ toggleShowShareModal, showShareModal, safelockId, safelock
                     className="share-method"
                     onClick={() => {
                         navigator.clipboard.writeText(pageUrl)
-
                     }}
                 >
                     <span>Copy To Clipboard</span>
@@ -116,22 +115,22 @@ const ShareModal = ({ toggleShowShareModal, showShareModal, safelockId, safelock
                 </div>
 
                 <div className="share-method socials">
-                    <div>
+                    <div className="socials-icon">
                         <EmailShareButton url={pageUrl}>
                             <Icon icon="clarity:email-line" />
                         </EmailShareButton>
                     </div>
-                    <div>
+                    <div className="socials-icon">
                         <FacebookShareButton>
                             <Icon icon="akar-icons:facebook-fill" />
                         </FacebookShareButton>
                     </div>
-                    <div>
+                    <div className="socials-icon">
                         <TwitterShareButton url={pageUrl}>
                             <Icon icon="akar-icons:twitter-fill" />
                         </TwitterShareButton>
                     </div>
-                    <div>
+                    <div className="socials-icon">
                         <TelegramShareButton url={pageUrl}>
                             <Icon icon="akar-icons:telegram-fill" />
                         </TelegramShareButton>
