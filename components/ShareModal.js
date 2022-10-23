@@ -6,6 +6,7 @@ import { useEffect, useState } from "react"
 import QRCode from "qrcode"
 import { useMoralis } from "react-moralis"
 import { safelockFactoryAddresses, chains } from "../constants"
+import NotificationBar from "./Notification-bar"
 import {
     EmailShareButton,
     FacebookShareButton,
@@ -45,6 +46,8 @@ const ShareModal = ({ toggleShowShareModal, showShareModal, safelockId, safelock
     const whatsappShareText = `Check out my Safelock with address ${safelockAddress} at ${pageUrl}`
     const dispatch = useNotification()
     const [qrCode, setQrCode] = useState("")
+    const [notificationText, setNotificationText] = useState("")
+    const [showNotificationBar, setShowNotificationBar] = useState(false)
 
     const generateQRCode = () => {
         QRCode.toDataURL(pageUrl, (err, qrUrl) => {
@@ -54,12 +57,22 @@ const ShareModal = ({ toggleShowShareModal, showShareModal, safelockId, safelock
             setQrCode(qrUrl)
         })
     }
+    const showNotification = (text) => {
+        setNotificationText(text)
+        setShowNotificationBar(true)
+        setTimeout(() => {
+            setShowNotificationBar(false)
+            setNotificationText("")
+        }, 5000)
+        
+    }
 
     useEffect(() => {
         generateQRCode()
     }, [])
     return (
         <div className={showShareModal ? "share-modal" : "share-modal hidden"}>
+            <NotificationBar isShown={showNotificationBar} notificationText={notificationText} />
             <div className="back-button">
                 <div
                     className="actual-back-button"
@@ -75,6 +88,7 @@ const ShareModal = ({ toggleShowShareModal, showShareModal, safelockId, safelock
                     className="share-method"
                     onClick={() => {
                         navigator.clipboard.writeText(pageUrl)
+                        showNotification("Safelock URL copied to clipboard")
                     }}
                 >
                     <span>Copy To Clipboard</span>

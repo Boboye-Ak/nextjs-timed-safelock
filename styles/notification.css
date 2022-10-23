@@ -1,0 +1,19 @@
+.notification {
+    border: solid;
+    background-color: red;
+    position: absolute;
+    left: 30vw;
+    top: 5vh;
+    z-index: 7;
+    width: 40vw;
+    height: 60px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    transition: 0.5s;
+}
+
+.notification.hidden {
+    top: -30%;
+}
