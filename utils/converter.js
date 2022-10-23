@@ -26,4 +26,8 @@ const convertweiToEthNum = (eth) => {
     return parseFloat(result)
 }
 
-module.exports = { convertToEth, convertToWei, convertweiToEthNum }
+const dec2Hex=(dec)=> {
+    return Math.abs(parseFloat(dec)).toString(16)
+}
+
+module.exports = { convertToEth, convertToWei, convertweiToEthNum, dec2Hex }

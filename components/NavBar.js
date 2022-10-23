@@ -4,6 +4,7 @@ import { useState } from "react"
 import { useWeb3Contract, useMoralis } from "react-moralis"
 import { safelockFactoryABI, safelockFactoryAddresses, chains } from "../constants"
 import { ethers } from "ethers"
+import NotificationBar from "./Notification-bar"
 
 const NavBar = ({ toggleShowNavBar, showNavBar }) => {
     const router = useRouter()
@@ -20,6 +21,9 @@ const NavBar = ({ toggleShowNavBar, showNavBar }) => {
     activeChain = activeChain[0]
     const [searchInput, setSearchInput] = useState("")
     const [showSearchBar, setShowSearchBar] = useState(false)
+    const [notificationText, setNotificationText] = useState("")
+    const [showNotificationBar, setShowNotificationBar] = useState(false)
+    const [notificationType, setNotificationType] = useState("")
     //Web3 Functions
     const { runContractFunction: getSafelockAddressById } = useWeb3Contract({
         abi: safelockFactoryABI,
@@ -35,6 +39,16 @@ const NavBar = ({ toggleShowNavBar, showNavBar }) => {
     })
 
     //Web2 Functions
+
+    const showNotification = (text, notificationType = "success") => {
+        setNotificationText(text)
+        setNotificationType(notificationType)
+        setShowNotificationBar(true)
+        setTimeout(() => {
+            setShowNotificationBar(false)
+            setNotificationText("")
+        }, 5000)
+    }
     const search = async () => {
         console.log("searching")
         if (searchInput) {
@@ -61,6 +75,7 @@ const NavBar = ({ toggleShowNavBar, showNavBar }) => {
                     return
                 } else {
                     console.log("result not found")
+                    showNotification("No Safelock with that ID/Address", "error")
                     return
                 }
             }
@@ -69,6 +84,9 @@ const NavBar = ({ toggleShowNavBar, showNavBar }) => {
 
     return (
         <div className={showNavBar ? "navbar" : "navbar hidden"}>
+            <NotificationBar               isShown={showNotificationBar}
+                notificationText={notificationText}
+                notificationType={notificationType}/>
             <div className="back-button">
                 <div
                     className="actual-back-button"

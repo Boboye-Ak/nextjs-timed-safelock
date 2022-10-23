@@ -3,6 +3,7 @@ import { useMoralis, useWeb3Contract } from "react-moralis"
 import { useRouter } from "next/router"
 import { useState } from "react"
 import Loader from "./Loader"
+import NotificationBar from "./Notification-bar"
 
 const CreateSafelock = ({ updateUI }) => {
     const router = useRouter()
@@ -13,6 +14,9 @@ const CreateSafelock = ({ updateUI }) => {
     const [firstName, setFirstName] = useState("")
     const [isAwaitingConfirmation, setIsAwaitingConfirmation] = useState(false)
     const [isLoading, setIsLoading] = useState(false)
+    const [notificationText, setNotificationText] = useState("")
+    const [showNotificationBar, setShowNotificationBar] = useState(false)
+    const [notificationType, setNotificationType] = useState("")
 
     //Web3 Functions
     const {
@@ -27,6 +31,16 @@ const CreateSafelock = ({ updateUI }) => {
     })
 
     //Web2 Functions
+
+    const showNotification = (text, notificationType = "success") => {
+        setNotificationText(text)
+        setNotificationType(notificationType)
+        setShowNotificationBar(true)
+        setTimeout(() => {
+            setShowNotificationBar(false)
+            setNotificationText("")
+        }, 5000)
+    }
     const handleCreate = async () => {
         console.log({ firstName, safelockFactoryABI, safelockFactoryAddress })
         await createSafelock({
@@ -36,7 +50,12 @@ const CreateSafelock = ({ updateUI }) => {
                 await tx.wait(1)
                 setIsAwaitingConfirmation(false)
                 await updateUI()
+                showNotification("New Safelock Created. Redirecting...", "success")
                 router.push("/mysafelock")
+            },
+            onError: async () => {
+                console.log("error creating safelock")
+                showNotification("Error Creating New Safelock", "error")
             },
         })
     }
@@ -50,6 +69,11 @@ const CreateSafelock = ({ updateUI }) => {
                 height: "90vh",
             }}
         >
+            <NotificationBar
+                isShown={showNotificationBar}
+                notificationText={notificationText}
+                notificationType={notificationType}
+            />
             {isLoading && <Loader />}
             <div className="create-safelock-form">
                 <input
