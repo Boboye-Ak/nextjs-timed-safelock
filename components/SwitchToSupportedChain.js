@@ -6,21 +6,26 @@ const SwitchToSupportedChain = () => {
     const { switchNetwork, chainId, chain, account } = useChain()
     return (
         <div className="unsupported-chain">
-            You are currently on a Chain that is not supported. Please Switch to a supported chain
-            and connect wallet. Supported chains are:{" "}
-            {supportedChains.map((chain, index) => {
-                return (
-                    <span
-                        key={index}
-                        onClick={() => {
-                            switchNetwork(`0x${dec2Hex(chain.chainId)}`)
-                        }}
-                    >
-                        {index != 0 && ", "}
-                        {chain.name}
-                    </span>
-                )
-            })}
+            <div>
+                You are currently on a Chain that is not supported. Please Switch to a supported
+                chain and connect wallet.
+            </div>{" "}
+            <div>Supported chains are:</div>
+            <ul>
+                {supportedChains.map((chain, index) => {
+                    return (
+                        <li
+                            className="chain-name"
+                            key={index}
+                            onClick={() => {
+                                switchNetwork(`0x${dec2Hex(chain.chainId)}`)
+                            }}
+                        >
+                            {chain.name}
+                        </li>
+                    )
+                })}
+            </ul>
         </div>
     )
 }

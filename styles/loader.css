@@ -22,10 +22,17 @@
     z-index: 7;
     width: 100vw;
     height: 100vh;
+    font-size: 20px;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     background-color: black;
     opacity: 0.9;
+}
+
+.unsupported-chain .chain-name {
+    text-decoration: underline;
+    color: blue;
+    cursor: pointer;
 }
