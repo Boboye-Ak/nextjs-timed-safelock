@@ -76,7 +76,7 @@
 
 .navbar .li .close-button {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     border: solid;

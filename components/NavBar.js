@@ -76,7 +76,7 @@ const NavBar = ({ toggleShowNavBar, showNavBar }) => {
                         toggleShowNavBar()
                     }}
                 >
-                    x
+                    X
                 </div>
             </div>
             <div className="ul">
