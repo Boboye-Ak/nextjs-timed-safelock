@@ -10,6 +10,7 @@ import NoSafes from "./NoSafes"
 import Safe from "./Safe"
 import ShareModal from "./ShareModal"
 import Switch from "./Switch"
+import NotificationBar from "./Notification-bar"
 
 const Safelock = ({ safelockId, safelockAddress, safelockOwner }) => {
     const { chainId: chainIdHex, isWeb3Enabled, account } = useMoralis()
@@ -25,6 +26,9 @@ const Safelock = ({ safelockId, safelockAddress, safelockOwner }) => {
     const [isOwner, setIsOwner] = useState(false)
     const [showShareModal, setShowShareModal] = useState(false)
     const [isLoading, setIsLoading] = useState(false)
+    const [notificationText, setNotificationText] = useState("")
+    const [showNotificationBar, setShowNotificationBar] = useState(false)
+    const [notificationType, setNotificationType] = useState("")
     //Web3 functions
     const {
         runContractFunction: getSafes,
@@ -49,6 +53,15 @@ const Safelock = ({ safelockId, safelockAddress, safelockOwner }) => {
     let filteredSafesFromCall, safesFromCall
 
     //Web2 Functions
+    const showNotification = (text, notificationType = "success") => {
+        setNotificationText(text)
+        setNotificationType(notificationType)
+        setShowNotificationBar(true)
+        setTimeout(() => {
+            setShowNotificationBar(false)
+            setNotificationText("")
+        }, 5000)
+    }
     const updateUI = async () => {
         safesFromCall = await getSafes()
         setSafes(safesFromCall)
@@ -79,6 +92,11 @@ const Safelock = ({ safelockId, safelockAddress, safelockOwner }) => {
                 showShareModal={showShareModal}
                 safelockAddress={safelockAddress}
                 safelockId={safelockId}
+            />
+            <NotificationBar
+                isShown={showNotificationBar}
+                notificationText={notificationText}
+                notificationType={notificationType}
             />
             <div
                 style={{
@@ -128,6 +146,10 @@ const Safelock = ({ safelockId, safelockAddress, safelockOwner }) => {
                                     className="copy-icon"
                                     onClick={() => {
                                         navigator.clipboard.writeText(safelockAddress)
+                                        showNotification(
+                                            "Safelock Address copied to Clipboard",
+                                            "success"
+                                        )
                                     }}
                                 >
                                     <Icon icon="clarity:copy-to-clipboard-line" />
@@ -158,7 +180,7 @@ const Safelock = ({ safelockId, safelockAddress, safelockOwner }) => {
                 }
             </div>
 
-            {safes?.length <= 0 && <NoSafes />}
+            {safes?.length <= 0 && <NoSafes isOwner={isOwner} />}
             {safes?.map((safe, index) => {
                 return (
                     <Safe
@@ -179,11 +201,12 @@ const Safelock = ({ safelockId, safelockAddress, safelockOwner }) => {
                     />
                 )
             })}
-            {showNewSafeForm && isOwner && (
+            {isOwner &&showNewSafeForm&& (
                 <NewSafeForm
                     safelockAddress={safelockAddress}
                     updateUI={updateUI}
                     toggleNewSafeForm={toggleNewSafeForm}
+                    
                 />
             )}
             {!showNewSafeForm && isOwner && (

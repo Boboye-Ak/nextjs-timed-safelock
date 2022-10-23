@@ -1,4 +1,4 @@
-const NoSafes = () => {
+const NoSafes = ({ isOwner }) => {
     return (
         <div
             style={{
@@ -8,10 +8,9 @@ const NoSafes = () => {
                 alignItems: "center",
                 justifyContent: "center",
             }}
-
             className="no-safes"
         >
-            YOU DO NOT HAVE ANY SAFES...YET
+            {isOwner?<>YOU DO NOT HAVE ANY SAFES...YET</>:<>NO SAFES IN THIS SAFELOCK...YET</>}
         </div>
     )
 }

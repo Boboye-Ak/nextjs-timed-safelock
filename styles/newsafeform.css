@@ -10,6 +10,11 @@
     height: 26vh;
     border-radius: 6px;
     box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5);
+    transition: 0.4s;
+}
+.new-safe-form.hidden{
+    height: 0;
+    font-size: 0;
 }
 .new-safe-form-main {
     padding-left: 10px;

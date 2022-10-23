@@ -6,8 +6,9 @@ import { convertToWei } from "../utils/converter"
 import Switch from "./Switch"
 import { ethers } from "ethers"
 import Loader from "./Loader"
+import NotificationBar from "./Notification-bar"
 
-const NewSafeForm = ({ safelockAddress, updateUI, toggleNewSafeForm }) => {
+const NewSafeForm = ({ safelockAddress, updateUI, toggleNewSafeForm}) => {
     const { chainId: chainIdHex, isWeb3Enabled, account } = useMoralis()
     const chainId = parseInt(chainIdHex)
     const safelockFactoryAddress =
@@ -23,6 +24,9 @@ const NewSafeForm = ({ safelockAddress, updateUI, toggleNewSafeForm }) => {
     const [isAwaitingConfirmation, setIsAwaitingConfirmation] = useState(false)
     const [showBeneficiary, setShowBeneficiary] = useState(false)
     const [isLoading, setIsLoading] = useState(false)
+    const [notificationText, setNotificationText] = useState("")
+    const [showNotificationBar, setShowNotificationBar] = useState(false)
+    const [notificationType, setNotificationType] = useState("")
 
     //Web3 functions
     const {
@@ -41,6 +45,15 @@ const NewSafeForm = ({ safelockAddress, updateUI, toggleNewSafeForm }) => {
     })
 
     //Web2 functions
+    const showNotification = (text, notificationType = "success") => {
+        setNotificationText(text)
+        setNotificationType(notificationType)
+        setShowNotificationBar(true)
+        setTimeout(() => {
+            setShowNotificationBar(false)
+            setNotificationText("")
+        }, 5000)
+    }
 
     const updateParams = async () => {
         let secondsForCalculation,
@@ -77,9 +90,13 @@ const NewSafeForm = ({ safelockAddress, updateUI, toggleNewSafeForm }) => {
                 await tx.wait(1)
                 setIsAwaitingConfirmation(false)
                 setIsLoading(false)
-                updateUI()
+                await updateUI()
                 resetParams()
                 toggleNewSafeForm()
+                showNotification("New Safe Created Successfully")
+            },
+            onError: async () => {
+                showNotification("Error Creating New Safe", "error")
             },
         })
     }
@@ -100,6 +117,11 @@ const NewSafeForm = ({ safelockAddress, updateUI, toggleNewSafeForm }) => {
             }}
         >
             {isLoading && <Loader />}
+            <NotificationBar
+                isShown={showNotificationBar}
+                notificationText={notificationText}
+                notificationType={notificationType}
+            />
             <div
                 style={{
                     width: "100%",
