@@ -1,6 +1,5 @@
 .notification {
     border: solid;
-    background-color: red;
     position: absolute;
     left: 30vw;
     top: 5vh;
@@ -16,4 +15,11 @@
 
 .notification.hidden {
     top: -30%;
+}
+
+.notification.success {
+    background-color: green;
+}
+.notification.error {
+    background-color: red;
 }

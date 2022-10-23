@@ -48,6 +48,7 @@ const ShareModal = ({ toggleShowShareModal, showShareModal, safelockId, safelock
     const [qrCode, setQrCode] = useState("")
     const [notificationText, setNotificationText] = useState("")
     const [showNotificationBar, setShowNotificationBar] = useState(false)
+    const [notificationType, setNotificationType] = useState("")
 
     const generateQRCode = () => {
         QRCode.toDataURL(pageUrl, (err, qrUrl) => {
@@ -57,14 +58,14 @@ const ShareModal = ({ toggleShowShareModal, showShareModal, safelockId, safelock
             setQrCode(qrUrl)
         })
     }
-    const showNotification = (text) => {
+    const showNotification = (text, notificationType = "success") => {
         setNotificationText(text)
+        setNotificationType(notificationType)
         setShowNotificationBar(true)
         setTimeout(() => {
             setShowNotificationBar(false)
             setNotificationText("")
         }, 5000)
-        
     }
 
     useEffect(() => {
@@ -72,7 +73,11 @@ const ShareModal = ({ toggleShowShareModal, showShareModal, safelockId, safelock
     }, [])
     return (
         <div className={showShareModal ? "share-modal" : "share-modal hidden"}>
-            <NotificationBar isShown={showNotificationBar} notificationText={notificationText} />
+            <NotificationBar
+                isShown={showNotificationBar}
+                notificationText={notificationText}
+                notificationType={notificationType}
+            />
             <div className="back-button">
                 <div
                     className="actual-back-button"
