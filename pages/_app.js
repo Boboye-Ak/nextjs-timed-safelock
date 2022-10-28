@@ -15,6 +15,7 @@ import "../styles/navbar.css"
 import "../styles/share-modal.css"
 import "../styles/loader.css"
 import "../styles/notification.css"
+import "../styles/about.css"
 function MyApp({ Component, pageProps }) {
     return (
         <>
