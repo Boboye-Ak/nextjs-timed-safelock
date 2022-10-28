@@ -60,7 +60,7 @@ const SafelockPage = ({}) => {
         if (isWeb3Enabled) {
             updateUI()
         }
-    }, [isWeb3Enabled])
+    }, [isWeb3Enabled, account, chainId])
 
     useEffect(() => {
         if (id) {
@@ -80,7 +80,7 @@ const SafelockPage = ({}) => {
                     />
                 </>
             ) : (
-                <>404</>
+                <><Loader/></>
             )}
         </div>
     )
