@@ -1,7 +1,7 @@
 const safelockABI = require("./SafelockABI.json").abi
 const safelockFactoryABI = require("./SafelockFactoryABI.json").abi
 const safelockFactoryAddresses = require("./SafelockFactoryAddress.json")
-const baseURL = "http://localhost:3000"
+const baseURL = "https://polygon-timed-safelock.netlify.app/"
 const chains = require("./chains.json").chains
 
 const supportedChains = chains.filter((chain) => {
@@ -16,5 +16,5 @@ module.exports = {
     safelockFactoryAddresses,
     baseURL,
     supportedChains,
-    chains
+    chains,
 }
