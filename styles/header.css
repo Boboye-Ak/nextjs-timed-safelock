@@ -39,7 +39,7 @@
     border-radius: 50%;
     cursor: pointer;
 }
-.menu-button:hover{
+.menu-button:hover {
     background-color: blue;
 }
 
@@ -49,7 +49,7 @@
         height: 40px;
         font-size: 10px;
     }
-    .header{
+    .header {
         padding-right: 0;
     }
 }

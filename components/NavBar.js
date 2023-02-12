@@ -84,9 +84,11 @@ const NavBar = ({ toggleShowNavBar, showNavBar }) => {
 
     return (
         <div className={showNavBar ? "navbar" : "navbar hidden"}>
-            <NotificationBar               isShown={showNotificationBar}
+            <NotificationBar
+                isShown={showNotificationBar}
                 notificationText={notificationText}
-                notificationType={notificationType}/>
+                notificationType={notificationType}
+            />
             <div className="back-button">
                 <div
                     className="actual-back-button"

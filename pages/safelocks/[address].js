@@ -80,7 +80,9 @@ const SafelockPage = ({}) => {
                     />
                 </>
             ) : (
-                <><Loader/></>
+                <>
+                    <Loader />
+                </>
             )}
         </div>
     )

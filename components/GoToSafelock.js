@@ -16,7 +16,7 @@ const GoToSafelock = () => {
                     height: "90vh",
                 }}
             >
-                {isLoading&&<Loader/>}
+                {isLoading && <Loader />}
                 <button
                     class="glow-on-hover"
                     onClick={() => {

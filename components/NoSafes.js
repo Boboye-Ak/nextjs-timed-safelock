@@ -10,7 +10,7 @@ const NoSafes = ({ isOwner }) => {
             }}
             className="no-safes"
         >
-            {isOwner?<>YOU DO NOT HAVE ANY SAFES...YET</>:<>NO SAFES IN THIS SAFELOCK...YET</>}
+            {isOwner ? <>YOU DO NOT HAVE ANY SAFES...YET</> : <>NO SAFES IN THIS SAFELOCK...YET</>}
         </div>
     )
 }

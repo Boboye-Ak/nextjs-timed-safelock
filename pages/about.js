@@ -6,7 +6,7 @@ const AboutPage = () => {
     return (
         <div className={styles.container}>
             <Header />
-            <About/>
+            <About />
         </div>
     )
 }

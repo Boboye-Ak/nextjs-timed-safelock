@@ -17,7 +17,7 @@ const Safe = ({
 }) => {
     return (
         <div
-            className={isHidden?("safe hidden"):("safe")}
+            className={isHidden ? "safe hidden" : "safe"}
             style={{
                 border: "solid",
                 borderWidth: "thin",

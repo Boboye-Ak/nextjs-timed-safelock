@@ -16,7 +16,7 @@
     margin-top: 5px;
 }
 
-.create-safelock-button:disabled{
+.create-safelock-button:disabled {
     cursor: not-allowed;
     background: rgba(0, 0, 0, 0.08);
     color: rgba(0, 0, 0, 0.3);

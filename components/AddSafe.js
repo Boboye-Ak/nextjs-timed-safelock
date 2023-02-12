@@ -31,7 +31,9 @@ const AddSafe = ({ onClick }) => {
             >
                 +
             </div>
-            <div className={`add-safe-info ${!showInfo && "hidden"}`}>Click to Create a New Safe</div>
+            <div className={`add-safe-info ${!showInfo && "hidden"}`}>
+                Click to Create a New Safe
+            </div>
         </div>
     )
 }

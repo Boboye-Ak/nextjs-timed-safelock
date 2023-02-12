@@ -201,12 +201,11 @@ const Safelock = ({ safelockId, safelockAddress, safelockOwner }) => {
                     />
                 )
             })}
-            {isOwner &&showNewSafeForm&& (
+            {isOwner && showNewSafeForm && (
                 <NewSafeForm
                     safelockAddress={safelockAddress}
                     updateUI={updateUI}
                     toggleNewSafeForm={toggleNewSafeForm}
-                    
                 />
             )}
             {!showNewSafeForm && isOwner && (

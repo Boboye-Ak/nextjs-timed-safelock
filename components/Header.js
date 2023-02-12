@@ -97,7 +97,6 @@ const Header = () => {
                 <div>
                     <ConnectButton moralisAuth={false} />
                 </div>
-                
             </div>
             <NavBar toggleShowNavBar={toggleShowNavBar} showNavBar={showNavBar} />
         </>

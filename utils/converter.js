@@ -26,7 +26,7 @@ const convertweiToEthNum = (eth) => {
     return parseFloat(result)
 }
 
-const dec2Hex=(dec)=> {
+const dec2Hex = (dec) => {
     return Math.abs(parseFloat(dec)).toString(16)
 }
 

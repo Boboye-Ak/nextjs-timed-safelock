@@ -13,7 +13,9 @@ const YouDontHaveASafelock = () => {
                 height: "90vh",
             }}
         >
-            <div className="no-safelock-text">You Don&apos;t Have A Safelock. Please Create One</div>
+            <div className="no-safelock-text">
+                You Don&apos;t Have A Safelock. Please Create One
+            </div>
 
             <button
                 className="glow-on-hover"
